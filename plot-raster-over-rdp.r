@@ -10,8 +10,6 @@
 #'
 #' @return None
 #' @export
-#'
-#' @examples
 rrplot <- function(x,...){
   plot(x,useRaster=F,...)
 }
