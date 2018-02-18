@@ -8,12 +8,12 @@
 #' 
 #' @return NULL
 #' @export
-overplot.axes <- function(){
+overplot.axes <- function(...){
   l <- par('usr')
-  axis(1,at=l[1:2],labels=NA,tck=0)
-  axis(2,at=l[3:4],labels=NA,tck=0)
-  axis(3,at=l[1:2],labels=NA,tck=0)
-  axis(4,at=l[3:4],labels=NA,tck=0)
+  axis(1,at=l[1:2],labels=NA,tck=0,...)
+  axis(2,at=l[3:4],labels=NA,tck=0,...)
+  axis(3,at=l[1:2],labels=NA,tck=0,...)
+  axis(4,at=l[3:4],labels=NA,tck=0,...)
   return(NULL)
 }
   
