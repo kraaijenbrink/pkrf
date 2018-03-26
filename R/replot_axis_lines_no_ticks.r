@@ -8,7 +8,7 @@
 #' 
 #' @return NULL
 #' @export
-overplot.axes <- function(...){
+overplotAxes <- function(...){
   l <- par('usr')
   axis(1,at=l[1:2],labels=NA,tck=0,...)
   axis(2,at=l[3:4],labels=NA,tck=0,...)

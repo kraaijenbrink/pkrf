@@ -5,23 +5,22 @@
 #'
 #' Make color transparant
 #' 
-#' @param x color
-#' @param alpha transparancy value
-#' @return transparant color 
+#' @param x (vector of) color(s)
+#' @param alpha transparency value
+#' @return transparant (vector of) color(s)
 #' @export
-makeTransparent = function(..., alpha=0.5) {
+makeTransparent = function(colors=c('red','green','blue'), alpha=0.5) {
   
   if(alpha<0 | alpha>1) stop("alpha must be between 0 and 1")
   
-  alpha = floor(255*alpha)  
-  newColor = col2rgb(col=unlist(list(...)), alpha=FALSE)
-  
-  .makeTransparent = function(col, alpha) {
-    rgb(red=col[1], green=col[2], blue=col[3], alpha=alpha, maxColorValue=255)
+  cols    <- col2rgb(col=colors, alpha=FALSE)
+  alphacols <- sapply(1:ncol(cols), function(i)
+    sprintf('#%s%s%s%s',
+            format(as.hexmode(cols[1,i]), width=2),
+            format(as.hexmode(cols[2,i]), width=2),
+            format(as.hexmode(cols[3,i]), width=2),
+            format(as.hexmode(floor(255*alpha)), width=2)
+            )
+    )
+  return(alphacols) 
   }
-  
-  newColor = apply(newColor, 2, .makeTransparent, alpha=alpha)
-  
-  return(newColor)
-  
-}
