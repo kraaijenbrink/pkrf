@@ -40,7 +40,8 @@ plotColorbar <- function(breaks=seq(0,1,0.1),
                          pmgp=c(2.5,0.66,0),
                          pmar=c(3,0.5,0.5,0.5)){
 
-op <- par(mgp=pmgp, mar=pmar)
+op <- par()  
+par(mgp=pmgp, mar=pmar, xpd=NA)
 
 # get polygon coordinates
 px.outer <- c(breaks,rev(breaks))
@@ -57,8 +58,12 @@ pxy <- lapply(1:(length(breaks)-1), function(i){
 })
 
 # set xlimits of plot to scale the barlength
-xlimits <- c(range(breaks)[1] - (diff(range(breaks)) * barlength/2),
-             range(breaks)[2] + (diff(range(breaks)) * barlength/2))
+barlength <- barlength/diff(range(breaks))
+xlimits <- c(mean(range(breaks)) - 0.5*(1/barlength),
+             mean(range(breaks)) + 0.5*(1/barlength))
+
+# set ylimits
+ylimits <- c(0.2,0.8)
 
 # make plot
 plot(NA, axes=F,xlab='',ylab='',xlim=xlimits,ylim=c(0,1),xaxs='i',yaxs='i')
@@ -69,11 +74,12 @@ polygon(px.outer,py.outer, lwd=barlwd)
 
 # create axis
 axisticks <- breaks
-if(locut){axisrange <- axisrange[-1]}
-if(hicut){axisrange <- axisrange[-length(axisrange)]}
-if(smallticks){axis(1,at=axisticks, label=NA, tck=tck1)}
-axis(1,at=axisbreaks, labels=axisbreaklab, tck=tck2, cex.axis=axiscex)
+if(locut){axisticks <- axisticks[-1]}
+if(hicut){axisticks <- axisticks[-length(axisticks)]}
+if(smallticks){axis(1,at=axisticks, label=NA, tck=tck1, lwd=barlwd)}
+axis(1,at=axisbreaks, labels=axisbreaklab, tck=tck2, cex.axis=axiscex, lwd=barlwd)
 mtext(axislab,1, line=1.8,cex=labelcex)
+
 par <- op
 
 return(NULL)
