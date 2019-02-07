@@ -12,4 +12,4 @@ NeedsCompilation: no
 URL: http://www.uu.nl/staff/PDAKraaijenbrink
 Imports:
     raster
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
