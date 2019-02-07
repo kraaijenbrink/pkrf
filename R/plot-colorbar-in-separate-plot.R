@@ -10,6 +10,7 @@
 #' @param barlength relative length of the bar
 #' @param barlwd line width for color bar
 #' @param axislab axis label for the colorbar
+#' @param axislabline spacing for the axis label
 #' @param locut should the lower limit represent a cutoff? (boolean)
 #' @param hicut should the higher limit represent a cutoff? (boolean)
 #' @param smallticks plot small unlabeled ticks for each break (boolean)
@@ -28,6 +29,7 @@ plotColorbar <- function(breaks=seq(0,1,0.1),
                          barlength=0.5,
                          barlwd=0.5,
                          axislab='Colorscale',
+                         axislabline=1.8,
                          locut=F,
                          hicut=F,
                          smallticks=F,
@@ -38,7 +40,8 @@ plotColorbar <- function(breaks=seq(0,1,0.1),
                          axiscex=0.7,
                          labelcex=1.0,
                          pmgp=c(2.5,0.66,0),
-                         pmar=c(3,0.5,0.5,0.5)){
+                         pmar=c(3,0.5,0.5,0.5)
+                         ){
 
 op <- par()  
 par(mgp=pmgp, mar=pmar, xpd=NA)
@@ -78,7 +81,7 @@ if(locut){axisticks <- axisticks[-1]}
 if(hicut){axisticks <- axisticks[-length(axisticks)]}
 if(smallticks){axis(1,at=axisticks, label=NA, tck=tck1, lwd=barlwd)}
 axis(1,at=axisbreaks, labels=axisbreaklab, tck=tck2, cex.axis=axiscex, lwd=barlwd)
-mtext(axislab,1, line=1.8,cex=labelcex)
+mtext(axislab,1, line=axislabline,cex=labelcex)
 
 par <- op
 
