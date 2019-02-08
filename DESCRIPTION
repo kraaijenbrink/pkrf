@@ -1,5 +1,5 @@
 Package: pkrf
-Version: 0.0.1
+Version: 0.2.0
 Title: Philip Kraaijenbrink's R functions
 Description: Helper functions of all sorts.
 Author: Philip Kraaijenbrink <p.d.a.kraaijenbrink@uu.nl>
@@ -11,5 +11,6 @@ Encoding: UTF-8
 NeedsCompilation: no
 URL: http://www.uu.nl/staff/PDAKraaijenbrink
 Imports:
-    raster
+    raster,
+    googledrive
 RoxygenNote: 6.1.1

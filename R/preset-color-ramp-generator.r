@@ -14,7 +14,8 @@
 
 pkRamp <- function(name='parula', number=100, reversed=F){
 
-namelist <- c('Jet','Parula','Viridis','Inferno','Magma','Plasma','Cividis','TerrainAG','WtSpec','RwB','PwG','OwP','Spectral')
+namelist <- c('Jet','Parula','Viridis','Inferno','Magma','Plasma','Cividis','ElevAG','WtSpec','RwB','PwG','OwP','Spectral',
+              'ElevNat1','ElevNat2','RwBsoft','RwBpale','Taupe')
 if (sum(namelist %in% name)){
   message <- paste0('Color ramp not available. Choose any of:\n',paste(sort(namelist),collapse=', '))
 }
@@ -32,6 +33,12 @@ colpal   <- switch(which(tolower(namelist) %in% tolower(name)),
   c("40004B","762A83","9970AB","C2A5CF","E7D4E8","F7F7F7","D9F0D3","A6DBA0","5AAE61","1B7837","00441B"),
   c("7F3B08","B35806","E08214","FDB863","FEE0B6","F7F7F7","D8DAEB","B2ABD2","8073AC","542788","2D004B"),
   c("9E0142","D53E4F","F46D43","FDAE61","FEE08B","FFFFBF","E6F598","ABDDA4","66C2A5","3288BD","5E4FA2"),
+  c('566314','9ba864','c5cc90','a59a7f','5b4242'),
+  c('75a05b','e5d9a7','fcc575','baa395','e2e2e2'),
+  c('2b2d42','8c95ad','F4F4F4','e28f76','93021b'),
+  c('353642','9ca0ad','F4F4F4','e2b7aa','934855'),
+  c('22223b','4a4e69','9a8c98','c9ada7','f2e9e4')
+  
   
 )
 if (reversed){colpal <- rev(colpal)}

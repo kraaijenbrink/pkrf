@@ -7,7 +7,7 @@
 pkPal(name = "Set1", number = 0, reversed = F, random = F)
 }
 \arguments{
-\item{name}{Name of the palette (string).}
+\item{name}{Name of the palette (case-insensitive string).}
 
 \item{number}{Number of output colors desired (integer).}
 

@@ -5,7 +5,7 @@
 #' Load preset color palettes
 #'
 #' Load color palettes from preset
-#' @param name Name of the palette (string).
+#' @param name Name of the palette (case-insensitive string).
 #' @param number Number of output colors desired (integer). 
 #' @param reversed Reverse palette order (logical).
 #' @param reversed Randomize palette order (logical).
@@ -14,7 +14,9 @@
 #' @export
 pkPal <- function(name='Set1', number=0, reversed=F, random=F){
   
-  namelist <- c('Set1','Set2','Set3','Pastel1','Pastel2','Accent','Dark', 'Google','Raven','Muted','Cappuccino')
+  namelist <- c('Set1','Set2','Set3','Pastel1','Pastel2','Accent','Dark', 'Google','Raven','Muted','Cappuccino',
+                'Pale1','Water','Skin','NS','Legendary','WarmWall', 'Oasis','Earthly','A3','AfterCold','Swoop',
+                'BurbleTeal')
   if (sum(namelist %in% name)){
     message <- paste0('Color palette not available. Choose any of:\n',paste(sort(namelist),collapse=', '))
   }
@@ -29,7 +31,22 @@ pkPal <- function(name='Set1', number=0, reversed=F, random=F){
                      c('008744','0057e7','d62d20','ffa700','000000'),
                      c('0e1a40','222f5b','5d5d5d','946b2d','000000'),
                      c('2e4045','83adb5','c7bbc9','5e3c58','bfb5b2'),
-                     c('4b3832','854442','E5DBCF','3c2f2f','be9b7b')
+                     c('4b3832','854442','E5DBCF','3c2f2f','be9b7b'),
+                     c('c4b2c2','b38d97','d5aca9','ebcfb2','c5baaf'),
+                     c('b9d6f2','084c61','061a40','0353a4','2d93ad'),
+                     c('d8e2dc','ffe5d9','ffcad4','f4acb7','9d8189'),
+                     c('06aed5','086788','f0c808','f9e39f','dd1c1a'),
+                     c('5bc0eb','fde74c','9bc53d','e55934','fa7921'),
+                     c('d1cebe','e07a5f','3d405b','81b29a','f2cc8f'),
+                     c('000000','839788','eee0cb','baa898','bfd7ea'),
+                     c('537d99','def2c8','bbc451','9a9b58','8f451f'),
+                     c('1c3144','d00000','ffba08','a2aebb','3f88c5'),
+                     c('171219','225560','edf060','f0803c','310d20'),
+                     c('dd7373','3b3561','ead94c','d1d1d1','51a3a3'),
+                     c('2d3047','93b7be','e0ca3c','a799b7','048a81')
+                     
+                     
+                     
   )
   
   if (reversed){colpal <- rev(colpal)}
