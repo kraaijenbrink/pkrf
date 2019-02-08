@@ -21,7 +21,7 @@
 #'
 #' @return plot
 #' @export
-heatmapPK <- function(mat=NULL, xrange=NULL, yrange=NULL, xlimit=NULL, ylimit=NULL,
+pkHeatmap <- function(mat=NULL, xrange=NULL, yrange=NULL, xlimit=NULL, ylimit=NULL,
                       colramp=topo.colors(200), maketicks=T, makebox=T, axislwd=0.5,
                       locut=NULL, hicut=NULL, nacut=F,...){
   
