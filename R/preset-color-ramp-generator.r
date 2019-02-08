@@ -16,8 +16,8 @@ pkRamp <- function(name='parula', number=100, reversed=F){
 
 namelist <- c('Jet','Parula','Viridis','Inferno','Magma','Plasma','Cividis','ElevAG','WtSpec','RwB','PwG','OwP','Spectral',
               'ElevNat1','ElevNat2','RwBsoft','RwBpale','Taupe')
-if (sum(namelist %in% name)){
-  message <- paste0('Color ramp not available. Choose any of:\n',paste(sort(namelist),collapse=', '))
+if (sum(namelist %in% name)==0){
+  message <- stop(paste0('Color ramp not available. Choose any of:\n',paste(sort(namelist),collapse='\n')))
 }
 colpal   <- switch(which(tolower(namelist) %in% tolower(name)),
   c("0000FF","0080FF","00FFFF","80FF80","FFFF00","FF8000","FF0000","800000"),

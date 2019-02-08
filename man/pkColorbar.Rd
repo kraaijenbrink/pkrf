@@ -9,7 +9,7 @@ pkColorbar(breaks = seq(0, 1, 0.1), colors = gray.colors(length(breaks)
   axislabline = 1.8, locut = F, hicut = F, smallticks = F,
   axisbreaks = breaks, axisbreaklab = axisbreaks, tck1 = -0.015,
   tck2 = -0.03, axiscex = 0.7, labelcex = 1, pmgp = c(2.5, 0.66,
-  0), pmar = c(3, 0.5, 0.5, 0.5))
+  0), pmar = c(3, 0.5, 0.5, 0.5), ...)
 }
 \arguments{
 \item{breaks}{vector of break values}
@@ -43,6 +43,8 @@ pkColorbar(breaks = seq(0, 1, 0.1), colors = gray.colors(length(breaks)
 \item{pmgp}{temporary par 'mgp' to use}
 
 \item{pmar}{temporary par 'mar' to use}
+
+\item{...}{other arguments passed to axis function}
 
 \item{tck1}{length of large ticks}
 }

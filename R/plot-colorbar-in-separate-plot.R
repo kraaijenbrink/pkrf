@@ -22,6 +22,7 @@
 #' @param labelcex cex for axis label
 #' @param pmgp temporary par 'mgp' to use
 #' @param pmar temporary par 'mar' to use
+#' @param ... other arguments passed to axis function
 #' @return plotted colorbar
 #' @export
 pkColorbar <- function(breaks=seq(0,1,0.1),
@@ -40,10 +41,11 @@ pkColorbar <- function(breaks=seq(0,1,0.1),
                          axiscex=0.7,
                          labelcex=1.0,
                          pmgp=c(2.5,0.66,0),
-                         pmar=c(3,0.5,0.5,0.5)
+                         pmar=c(3,0.5,0.5,0.5),
+                         ...
                          ){
 
-op <- par()  
+op <- par('mgp','mar','xpd')
 par(mgp=pmgp, mar=pmar, xpd=NA)
 
 # get polygon coordinates
@@ -80,10 +82,10 @@ axisticks <- breaks
 if(locut){axisticks <- axisticks[-1]}
 if(hicut){axisticks <- axisticks[-length(axisticks)]}
 if(smallticks){axis(1,at=axisticks, label=NA, tck=tck1, lwd=barlwd)}
-axis(1,at=axisbreaks, labels=axisbreaklab, tck=tck2, cex.axis=axiscex, lwd=barlwd)
+axis(1,at=axisbreaks, labels=axisbreaklab, tck=tck2, cex.axis=axiscex, lwd=barlwd, ...)
 mtext(axislab,1, line=axislabline,cex=labelcex)
 
-par <- op
+par(mgp=op$mgp, mar=op$mar, xpd=op$xpd)
 
 return(NULL)
 }
