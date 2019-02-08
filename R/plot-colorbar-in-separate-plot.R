@@ -24,7 +24,7 @@
 #' @param pmar temporary par 'mar' to use
 #' @return plotted colorbar
 #' @export
-plotColorbar <- function(breaks=seq(0,1,0.1),
+pkColorbar <- function(breaks=seq(0,1,0.1),
                          colors=gray.colors(length(breaks)-1),
                          barlength=0.5,
                          barlwd=0.5,

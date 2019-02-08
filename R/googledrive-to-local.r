@@ -12,7 +12,7 @@
 #'
 #' @return Nothing
 #' @export
-downDriveDir <- function(drivePath, localPath, authFile, rmFromDrive=FALSE){
+pkDownDriveDir <- function(drivePath, localPath, authFile, rmFromDrive=FALSE){
 
   dp <- require(googledrive); if(dp==FALSE){stop('"googledrive" package is missing')}
   # authenticate with google

@@ -5,9 +5,11 @@
 #'
 #' Function to convert device lines to inches
 #' 
-#' @param x Number of lines.
+#' @param x Number of lines
+#' @param cm Return centimeter instead (logical)
 #' @return Number of inches 
 #' @export
-linesToInches <- function(x=1){
-  par('cin')[2] * par('cex') * par('lheight') * x
+pkLineToInch <- function(x=1, cm=F){
+  inches <- par('cin')[2] * par('cex') * par('lheight') * x
+  return(ifelse(cm, inches*2.54, inches))
 }

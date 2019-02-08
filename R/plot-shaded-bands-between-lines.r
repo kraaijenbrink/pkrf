@@ -12,7 +12,7 @@
 #'
 #' @return Shaded areas in current plot
 #' @export
-shadeplot <- function(x,y,clr,...){
+pkShadeplot <- function(x,y,clr,...){
   for (i in 1:(ncol(x)-1)){
     polygon(c(x[,i],rev(x[,i+1])),
             c(y[,i],rev(y[,i+1])),
