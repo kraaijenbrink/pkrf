@@ -17,7 +17,7 @@ pkPal <- function(name='Set1', number=0, reversed=F, random=F){
   namelist <- c('Set1','Set2','Set3','Pastel1','Pastel2','Accent','Dark', 'Google','Raven','Muted','Cappuccino',
                 'Pale1','Water','Skin','NS','Legendary','WarmWall', 'Oasis','Earthly','A3','AfterCold','Swoop',
                 'BurbleTeal')
-  if (sum(namelist %in% name)==0){
+  if (sum(tolower(namelist) %in% tolower(name))==0){
     message <- stop(paste0('Color palette not available. Choose any of:\n',paste(sort(namelist),collapse='\n')))
   }
   colpal   <- switch(which(tolower(namelist) %in% tolower(name)),
