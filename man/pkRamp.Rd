@@ -4,7 +4,7 @@
 \alias{pkRamp}
 \title{Load preset color ramps}
 \usage{
-pkRamp(name = "parula", number = 100, reversed = F)
+pkRamp(name = "parula", number = 100, reversed = F, show = F)
 }
 \arguments{
 \item{name}{Name of the color ramp (string).}
@@ -12,6 +12,8 @@ pkRamp(name = "parula", number = 100, reversed = F)
 \item{number}{Number of output colors desired (integer).}
 
 \item{reversed}{Should the ramp be reversed (logical).}
+
+\item{show}{Show a plot of all available color ramps (logical).}
 }
 \value{
 Vector with hex colors strings.

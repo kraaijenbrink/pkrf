@@ -4,7 +4,8 @@
 \alias{pkPal}
 \title{Load preset color palettes}
 \usage{
-pkPal(name = "Set1", number = 0, reversed = F, random = F)
+pkPal(name = "Set1", number = 0, reversed = F, random = F,
+  show = F)
 }
 \arguments{
 \item{name}{Name of the palette (case-insensitive string).}
@@ -12,6 +13,8 @@ pkPal(name = "Set1", number = 0, reversed = F, random = F)
 \item{number}{Number of output colors desired (integer).}
 
 \item{reversed}{Reverse palette order (logical).}
+
+\item{show}{Show a plot of all available color palettes (logical).}
 
 \item{reversed}{Randomize palette order (logical).}
 }
