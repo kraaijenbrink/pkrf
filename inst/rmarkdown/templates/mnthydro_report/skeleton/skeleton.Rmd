@@ -1,0 +1,43 @@
+---
+title: Template for RMarkdown reports in Mountain Hydrology style
+author: <span style="font-style:normal">Dr. Philip Kraaijenbrink</span>
+date:   <span style="font-style:normal">`r format(Sys.Date(),'%B %e, %Y')`</span><br><hr>
+output: 
+  pkrf::mh_report:
+    number_sections: false
+    theme: lumen   
+    toc: false
+    toc_depth: 1
+bibliography: E:/Dropbox/Literature/BibTeX_files/library.bib
+---
+
+
+# Introduction
+This is a placeholder introduction.  
+This is a reference to @Kraaijenbrink2017.
+
+
+# Study area
+This is a spalceholder study area section. It should be populated with a study area figure and explanation.
+
+
+# Methodology
+This is a placeholder method section
+
+## First subsection
+## Second subsection
+### First subsubsection
+
+# Results
+This is a placeholder result section.
+
+![**Figure X**. Example of an externally hosted figure, such as this one from the open access article by @Kraaijenbrink2018a.](https://www.frontiersin.org/files/Articles/364106/feart-06-00064-HTML-r1/image_m/feart-06-00064-g009.jpg)
+
+
+# Discussion
+This is a placeholder discussion section
+
+# Conclusions
+This is a placeholder conclusion section
+
+# References
