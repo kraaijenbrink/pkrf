@@ -12,7 +12,7 @@ output:
     fig_caption: yes
     fig_retina: 1
     # code_folding: show
-bibliography: E:/Dropbox/Literature/BibTeX_files/library.bib
+bibliography: "`r system.file('rmarkdown/styles/template.bib',package='pkrf')`"
 ---
 
 <!-- Add a horizonal line to separate header and body -->
