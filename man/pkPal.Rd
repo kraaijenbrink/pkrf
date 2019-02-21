@@ -4,13 +4,13 @@
 \alias{pkPal}
 \title{Load preset color palettes}
 \usage{
-pkPal(name = "Set1", number = 0, reversed = F, random = F,
+pkPal(name = "MntHydro", number = 0, reversed = F, random = F,
   show = F)
 }
 \arguments{
 \item{name}{Name of the palette (case-insensitive string).}
 
-\item{number}{Number of output colors desired (integer).}
+\item{number}{Number of output colors desired (integer). Set to 0 to get all colors available in the palette.}
 
 \item{reversed}{Reverse palette order (logical).}
 

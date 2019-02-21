@@ -1,43 +1,166 @@
 ---
-title: Template for RMarkdown reports in Mountain Hydrology style
+title: Mountain Hydrology Template for RMarkdown 
 author: <span style="font-style:normal">Dr. Philip Kraaijenbrink</span>
-date:   <span style="font-style:normal">`r format(Sys.Date(),'%B %e, %Y')`</span><br><hr>
+date:   <span style="font-style:normal">`r format(Sys.Date(),'%B %e, %Y')`</span><br>
 output: 
   pkrf::mh_report:
-    number_sections: false
-    theme: lumen   
+    theme: lumen
+    highlight: default
     toc: false
     toc_depth: 1
+    number_sections: false
+    fig_caption: yes
+    fig_retina: 1
+    # code_folding: show
 bibliography: E:/Dropbox/Literature/BibTeX_files/library.bib
 ---
 
-
-# Introduction
-This is a placeholder introduction.  
-This is a reference to @Kraaijenbrink2017.
+<!-- Add a horizonal line to separate header and body -->
+<hr>
 
 
-# Study area
-This is a spalceholder study area section. It should be populated with a study area figure and explanation.
-
-
-# Methodology
-This is a placeholder method section
-
+<!-- Show the use of sections -->
+# Sectioning
 ## First subsection
 ## Second subsection
-### First subsubsection
+### Subsubsection
 
-# Results
-This is a placeholder result section.
+<!-- Show color scheme -->
+# Color scheme
+The color scheme used in this template reflects those used for mountain hydrology powerpoint presentations and posters. This color scheme is, next to many others, available via the custom palette function of the `pkrf` package.
+```{r load_colors, message=FALSE, warning=FALSE, fig.align='center', fig.width=8, fig.height=0.25}
+library(pkrf)
+mhcolors <- pkPal('mnthydro')       # load the  palette using pkrf::pkPal()
+```
+<br>To show all palettes and their colors available in `pkrf` in a plot use the following syntax:  
+`pkPal(show=TRUE)`
+<br><br><br>
+The mountain hydrology palette consists of the following colors:  
+<br>
+```{r plot_palette, fig.align='center', fig.width=10, fig.height=0.5, echo=F}
+par(mar=c(1.5,0,0,0)); image(matrix(seq(mhcolors)),col=mhcolors,axes=F)
+mtext(1:length(mhcolors), at=seq(0,1,length.out=length(mhcolors)), side=1, line=0.5)
 
-![**Figure X**. Example of an externally hosted figure, such as this one from the open access article by @Kraaijenbrink2018a.](https://www.frontiersin.org/files/Articles/364106/feart-06-00064-HTML-r1/image_m/feart-06-00064-g009.jpg)
+```
 
 
-# Discussion
-This is a placeholder discussion section
 
-# Conclusions
-This is a placeholder conclusion section
+# Figures
+Figures can be added by running `R` code directly. For instance a curve of $f(x)=sin(x)$:
+```{r, echo=-1, fig.align='center', fig.width=5, fig.height=3, fig.cap="**Figure**: A figure produced by `R`."}
+par(mar=c(4,4,1,0.5), mgp=c(2.5,0.75,0), cex.axis=0.75, tck=-0.02, las=1)
+curve(sin(x), xlim=c(-2*pi,2*pi), xaxs='i', col=mhcolors[1], lwd=3); abline(v=0,h=0,lty=3)
+```
+
+
+## Local and external figures
+Local or external figures can also be added easily:  
+</br>  
+
+<style>.figure{text-align: center;}</style>
+<style>.caption{text-align: center;}</style>
+
+![**Figure**: Image from an external website [@Kraaijenbrink2018a].](https://www.frontiersin.org/files/Articles/364106/feart-06-00064-HTML-r1/image_m/feart-06-00064-g008.jpg){width=500px}
+
+
+## Interactive figures
+Interactive figures can be made using various [html widgets](https://www.htmlwidgets.org/index.html).  
+For example, one could covert a `ggplot2` plot to a plotly one using `ggplotly`:
+```{r message=F, warning=F, fig.align='center', fig.cap="**Figure**: A `ggplot2` figure converted into plotly. Data from @Kraaijenbrink2017.", fig.height=4, fig.width=6, warning=FALSE}
+library(ggplot2); library(plotly); library(pkrf)
+p <- ggplot(warming) +
+     geom_point(aes(x=dt_glob,y=dv_hma, label=gcm, color=rcp)) + scale_color_manual(values=mhcolors[1:4]) + 
+     geom_smooth(aes(x=dt_glob,y=dv_hma), method='lm') + 
+     labs(x='Global temperature rise (K)', y='Glacier mass loss in HMA (%)') + 
+     theme_light()
+ggplotly()
+```
+
+
+# Maps
+
+## Static map
+This is an example section with an R-generated study area map, using data from the `rworldmap` package.
+```{r study_map, message=FALSE, warning=FALSE, echo=-1, fig.align='center', fig.width=5, fig.height=3, fig.cap="**Figure**: This is an example of a static study area map."}
+par(mar=c(0.5,0.25,0.5,0.2))
+library(rworldmap); library(raster); library(rgdal)
+roi <- extent(c(range(glaciers$longitude),range(glaciers$latitude)))
+plot(rworldmap::countriesLow, col=mhcolors[3], xlim=(roi*2)[1:2], ylim=(roi*2)[3:4], border='white', asp=1)
+lines(as(roi,'SpatialPolygons'), lwd=3, col=mhcolors[2],0.75)
+labelCountries(col=mhcolors[1])
+box(lwd=2, col=mhcolors[1])
+```
+
+## Dynamic maps with Leaflet
+You can also easily make interactive multilayer maps using `leaflet`.
+
+<style>.html-widget{margin: 40px auto 30px auto; max-width: 100%;}</style>
+<!-- <div style="border: 3px solid `r mhcolors[1]`"> -->
+```{r dynamic_map, message=FALSE, warning=FALSE, fig.align='left', fig.width=8, fig.height=5, fig.cap="**Figure**: Interactive map of debris-covered glacier mass from `glaciers` data in the `pkrf` package using `leaflet` [@Kraaijenbrink2017]."}
+library(leaflet); library(magrittr); library(rgdal);
+library(raster); library(pkrf); library(base64enc);
+
+# calculate data derivatives
+glac              <- glaciers
+coordinates(glac) <- c(1,2)
+glac$percentage   <- glac$mass_debris_ela / glac$mass_total * 100
+glacrast          <- rasterFromXYZ(glaciers)
+crs(glac) <- crs(glacrast) <- crs("+init=EPSG:4326")
+precip <- projectRaster(glacrast$precip, res=10000, crs=crs("+init=EPSG:3857"))
+
+# construct colors palettes
+rastpal <- colorBin(palette='Blues', bins=c(seq(0,2000,250),5000), na.color='#00000000')
+fillpal <- colorBin(palette = 'Greys', bins=c(seq(0,30,5),100))
+linepal <- colorFactor(palette=pkPal('uumain',rand=T), domain=glac$region)
+
+# make some simple base64 encoded figures to embed in popup labels
+b64img <- lapply(1:nrow(glaciers), function(i){
+  tmpfn <- tempfile('subplot_',fileext='.png')
+  png(tmpfn, width=200, height=100, res=100)
+  par(mar=c(1.25,6,0.2,0.5), mgp=c(2,0.25,0), las=1, cex.axis=0.7, tck=-0.03)
+  barplot(unlist(glaciers[i,11:14]), ylab='', col=mhcolors, horiz=T,
+           names.arg=c('Total mass','Mass blw. ELA','Debris-covered','DC blw. ELA'))
+  dev.off()
+  b64 <- paste0('data:image/png;base64, ',base64encode(tmpfn))
+  return(b64)
+})
+
+# construct html labels, incl the base64 images
+labels <- sprintf('<strong>%s</strong></br>Glaciers: %.0f</br>ELA: %.0f m',
+                   glac$region, glac$count, glac$ela) 
+labels <- sprintf('%s<br><div style="width:200px"><img src="%s"></div>',labels,b64img)
+labels <- lapply(labels, htmltools::HTML)
+  
+# call leaflet and add multiple layers of data
+leaflet(glac) %>% 
+  addProviderTiles(providers$Esri.WorldImagery, option=list(opacity=1.0)) %>%
+  addProviderTiles(providers$Esri.WorldPhysical, option=list(opacity=0.6)) %>%
+  addRasterImage(precip, color=rastpal, opacity=0.85) %>%
+  addCircleMarkers(radius=~sqrt(count)/3, stroke=T, opacity=0.8, fillOpacity=1,
+                   weight=2, color=~linepal(region), fillColor=~fillpal(percentage),
+                   label=labels, labelOptions=list(textsize='13px')) %>%
+  addLegend('topright',pal=rastpal, values=c(0,cellStats(glacrast$precip,max)), opacity=0.85, title = "Precip (mm)") %>%
+  addLegend("topright", pal=fillpal, values=~percentage, opacity=0.85, title = "Debris-cover (%)") %>%
+  addLegend("topright", colors=mhcolors[2], labels='Region', opacity=1, title = NA)
+
+```
+
+
+
+# Tables
+Tables can be added in multiple ways.  
+For instance a raw HTML table using `knitr::kable`, or a nicely formatted table using `DT::datatable`
+
+```{r make_table, message=FALSE, warning=FALSE, fig.align='center',fig.cap='**Table**: Area and mass for glaciers in Asia in 2005.'}
+library(DT)
+glacsum <- aggregate(glaciers[,c(7,11)], by=list(glaciers$region), FUN=sum)
+datatable(glacsum, rownames=F, options=list(pageLength=5),
+          colnames=c('Region','Area (km2)','Mass (Gt)'))
+```
+
+
 
 # References
+A bib file can be used and references can be used inline, like this reference to @Kraaijenbrink2016a.  
+They can also be between parentheses by using square brackets [@Kraaijenbrink2017].  
+<br>

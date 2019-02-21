@@ -14,7 +14,7 @@ mh_report = function(...) {
     system.file(..., package = "pkrf")
   }
   
-  css    = pkg_resource("rmarkdown/styles/styles.css")
+  css    = pkg_resource("rmarkdown/styles/mh-report_styles.css")
   header = pkg_resource("rmarkdown/styles/mnthydro-header.html")
   footer = pkg_resource("rmarkdown/styles/mnthydro-footer.html")
   

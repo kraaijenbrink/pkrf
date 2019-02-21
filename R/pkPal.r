@@ -6,24 +6,28 @@
 #'
 #' Load color palettes from preset
 #' @param name Name of the palette (case-insensitive string).
-#' @param number Number of output colors desired (integer). 
+#' @param number Number of output colors desired (integer). Set to 0 to get all colors available in the palette.
 #' @param reversed Reverse palette order (logical).
 #' @param reversed Randomize palette order (logical).
 #' @param show Show a plot of all available color palettes (logical).
 #' 
 #' @return Vector with hex colors strings. 
 #' @export
-pkPal <- function(name='Set1', number=0, reversed=F, random=F, show=F){
+pkPal <- function(name='MntHydro', number=0, reversed=F, random=F, show=F){
   
-  namelist <- c('Set1','Set2','Set3','Pastel1','Pastel2','Accent','Dark', 'Google','Raven','Muted','Cappuccino',
+  namelist <- c('MntHydro','UUmain','UUalt',
+                'Set1','Set2','Set3','Pastel1','Pastel2','Accent','Dark', 'Google','Raven','Muted','Cappuccino',
                 'Pale1','Water','Skin','NS','Legendary','WarmWall', 'Oasis','Earthly','A3','AfterCold','Swoop',
-                'BurbleTeal','UU')
+                'BurbleTeal')
   if (sum(tolower(namelist) %in% tolower(name))==0){
     message <- stop(paste0('Color palette not available. Choose any of:\n',paste(sort(namelist),collapse='\n')))
   }
   
   getPal <- function(name){
     switch(which(tolower(namelist) %in% tolower(name)),
+                     c('232365','FFCD00','AAAAAA','7b942e','deebf6','202030','FFECA2','454545','dfebbd','d8ad00','1E5E37'),
+                     c('FFCD00','C00A35','000000','094D8E','36A2C9','791D72','9A0000','F08000','FEF200','419702'),
+                     c('FFE6AB','F3965E','AA1555','6E3B23','24A793','5287C6','001240','5B2182'),
                      c("E41A1C","377EB8","4DAF4A","984EA3","FF7F00","FFFF33","A65628","F781BF","999999"),
                      c("66C2A5","FC8D62","8DA0CB","E78AC3","A6D854","FFD92F","E5C494","B3B3B3"),
                      c("8DD3C7","FFFFB3","BEBADA","FB8072","80B1D3","FDB462","B3DE69","FCCDE5","D9D9D9","BC80BD","CCEBC5"),
@@ -46,8 +50,7 @@ pkPal <- function(name='Set1', number=0, reversed=F, random=F, show=F){
                      c('1c3144','d00000','ffba08','a2aebb','3f88c5'),
                      c('171219','225560','edf060','f0803c','310d20'),
                      c('dd7373','3b3561','ead94c','d1d1d1','51a3a3'),
-                     c('2d3047','93b7be','e0ca3c','a799b7','048a81'),
-                     c('FFCD00','C00A35','000000','FFE6AB','F3965E','AA1555','6E3B23','24A793','5287C6','001240','5B2182')
+                     c('2d3047','93b7be','e0ca3c','a799b7','048a81')
     )
   }
   

@@ -14,3 +14,4 @@ Imports:
     raster,
     googledrive
 RoxygenNote: 6.1.1
+LazyData: true
