@@ -1,0 +1,17 @@
+---
+title: Mountain Hydrology Template for RMarkdown 
+author: <span style="font-style:normal">Dr. Philip Kraaijenbrink</span>
+date:   <span style="font-style:normal">`r format(Sys.Date(),'%B %e, %Y')`</span><br>
+output: 
+  pkrf::mh_report:
+    theme: lumen
+    highlight: default
+    toc: false
+    toc_depth: 1
+    number_sections: false
+    fig_caption: yes
+    fig_retina: 1
+    # code_folding: show
+bibliography: E:/Dropbox/Literature/BibTeX_files/library.bib
+---
+
