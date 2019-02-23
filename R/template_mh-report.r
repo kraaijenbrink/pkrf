@@ -2,25 +2,15 @@
 # philip kraaijenbrink
 
 
-#' Markdown template
+#' Markdown report template
 #'
-#' Report for R markdoiwn with custom css and header and footers in mountainhydrology style.
+#' Report for R markdown with custom css and header and footers in mountainhydrology style.
 #' @export
 
 mh_report = function(...) {
   
-  # locations of resource files in the package
-  pkg_resource = function(...) {
-    system.file(..., package = "pkrf")
-  }
+  mhcss  = system.file("rmarkdown/styles/mh-report_styles.css", package="pkrf")
+  footer = system.file("rmarkdown/styles/mnthydro-footer.html", package="pkrf")
+  rmarkdown::html_document(...,css=mhcss, includes = rmarkdown::includes(after_body=footer))
   
-  css    = pkg_resource("rmarkdown/styles/mh-report_styles.css")
-  header = pkg_resource("rmarkdown/styles/mnthydro-header.html")
-  footer = pkg_resource("rmarkdown/styles/mnthydro-footer.html")
-  
-  # call the base html_document function
-  rmarkdown::html_document(...,
-                           css=css,
-                           includes = rmarkdown::includes(before_body=header, after_body=footer)
-                           )
 }

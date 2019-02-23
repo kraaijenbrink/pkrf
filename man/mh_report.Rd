@@ -2,10 +2,10 @@
 % Please edit documentation in R/template_mh-report.r
 \name{mh_report}
 \alias{mh_report}
-\title{Markdown template}
+\title{Markdown report template}
 \usage{
 mh_report(...)
 }
 \description{
-Report for R markdoiwn with custom css and header and footers in mountainhydrology style.
+Report for R markdown with custom css and header and footers in mountainhydrology style.
 }

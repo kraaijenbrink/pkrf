@@ -1,0 +1,76 @@
+body{
+	font-family: "Roboto",sans-serif;
+	-webkit-print-color-adjust: exact;
+}
+h1,h2,h3,h4{
+	color:  #232365 !important;
+	font-family: "Open Sans",sans-serif;
+	-webkit-print-color-adjust: exact;
+}
+code{
+	font-family: "Consolas", monospace;
+	-webkit-print-color-adjust: exact;
+}
+p{
+	color: #AAAAAA;
+}
+code{
+	color: #232365;
+	padding-left: 3px;
+	padding-right: 3px;
+
+	<!--
+	background-color: #eaf5ff;
+	margin-left: -2px;
+	margin-right: -2px;
+	-->
+}
+h1{
+	font-size: 45px !important;
+}
+.gdbar img {
+  width: 190px !important;
+  height: 60px !important;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.gdbar {
+  width: 332px !important;
+  height: 90px !important;
+}
+.prettyprint{
+	font-family: "Consolas", monospace;
+	-webkit-print-color-adjust: exact;
+	background-color: #eaf5ff;
+}
+.references p{
+	font-size: 60% !important;
+	padding-left: 20px ;
+    text-indent: -20px ;
+	line-height: 75%;
+}
+.caption{
+	font-size: 60% !important;
+	line-height: 75%;
+	text-align: center;
+}
+.html-widget{
+	margin: 10px auto 30px auto;
+	max-width: 100%;
+}
+.MathJax{
+	color: #232365;
+}
+
+.column-left{
+  float: left;
+  width: 50%;
+  text-align: left;
+}
+.column-right{
+  float: right;
+  width: 50%;
+  text-align: right;
+}
+	
