@@ -1,6 +1,7 @@
 # pkrf
-"Philip Kraaijenbrink's R Functions"
+"Philip Kraaijenbrink's R Functions". An `R` package with a combination of functions and `rmarkdown` templates for my day to day use.
 
-
-## Description  
-R package with a combination of functions and markdown templates for my day to day use in ***R***.
+To install use `devtools` package:
+```r
+devtools::install_github('kraaijenbrink/pkrf')
+```
