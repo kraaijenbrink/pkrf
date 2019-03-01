@@ -25,7 +25,7 @@ pkPal <- function(name='MntHydro', number=0, reversed=F, random=F, show=F){
   
   getPal <- function(name){
     switch(which(tolower(namelist) %in% tolower(name)),
-                     c('232365','FFCD00','AAAAAA','7b942e','deebf6','202030','FFECA2','454545','dfebbd','d8ad00','1E5E37'),
+                     c('232365','FFCD00','AAAAAA','7b942e','deebf6','202030','FFECA2','454545','dfebbd','9b7f0a','1E5E37'),
                      c('FFCD00','C00A35','000000','094D8E','36A2C9','791D72','9A0000','F08000','FEF200','419702'),
                      c('FFE6AB','F3965E','AA1555','6E3B23','24A793','5287C6','001240','5B2182'),
                      c("E41A1C","377EB8","4DAF4A","984EA3","FF7F00","FFFF33","A65628","F781BF","999999"),

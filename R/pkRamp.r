@@ -16,7 +16,7 @@
 pkRamp <- function(name='parula', number=100, reversed=F, show=F){
   
   namelist <- c('Jet','Parula','Viridis','Inferno','Magma','Plasma','Cividis','ElevAG','WtSpec','RwB','PwG','OwP','Spectral',
-                'ElevNat1','ElevNat2','RwBsoft','RwBpale','Taupe')
+                'ElevNat1','ElevNat2','RwBsoft','RwBpale','Taupe', 'Blues','Greens','BW','MHblues','MHramp')
   if (sum(tolower(namelist) %in% tolower(name))==0){
     message <- stop(paste0('Color ramp not available. Choose any of:\n',paste(sort(namelist),collapse='\n')))
   }
@@ -38,9 +38,14 @@ pkRamp <- function(name='parula', number=100, reversed=F, show=F){
            c("9E0142","D53E4F","F46D43","FDAE61","FEE08B","FFFFBF","E6F598","ABDDA4","66C2A5","3288BD","5E4FA2"),
            c('566314','9ba864','c5cc90','a59a7f','5b4242'),
            c('75a05b','e5d9a7','fcc575','baa395','e2e2e2'),
-           c('2b2d42','8c95ad','F4F4F4','e28f76','93021b'),
-           c('353642','9ca0ad','F4F4F4','e2b7aa','934855'),
-           c('22223b','4a4e69','9a8c98','c9ada7','f2e9e4')
+           c('93021b','e28f76','F4F4F4','8c95ad','2b2d42'),
+           c("934855","e2b7aa","F4F4F4","9ca0ad","353642"),
+           c('22223b','4a4e69','9a8c98','c9ada7','f2e9e4'),
+           c('f7fbff','deebf7','c6dbef','9ecae1','6baed6','4292c6','2171b5','08519c','08306b'),
+           c('f7fcf5','e5f5e0','c7e9c0','a1d99b','74c476','41ab5d','238b45','006d2c','00441b'),
+           c('000000','ffffff'),
+           c('ffffff','232365'),
+           c('FFCD00','c1ae5e','6b6b8c','232365')
     )
   }
 
