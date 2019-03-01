@@ -17,7 +17,7 @@
 #' @return Vector with hex colors strings. 
 #' @export
 
-shadowtext <- function(x, y=NULL, labels, col='white', bg='black',
+pkShadowText <- function(x, y=NULL, labels, col='white', bg='black',
                        theta=seq(pi/4, 2*pi, length.out=8), r=0.1, ... ) {
   
   xy <- xy.coords(x,y)
