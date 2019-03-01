@@ -17,7 +17,7 @@ output:
 
 
 <!-- Chunck to setup some defaults for knitr and ggplot-->
-```{r setupchunk, echo=F, message=F, warning=F, include=F}
+```{r setup, echo=F, message=F, warning=F, include=F}
 library(knitr); library(pkrf); library(ggplot2)
 knitr::opts_chunk$set(tidy=FALSE, warning=FALSE, message=FALSE, cache=F, 
                comment=NA, verbose=TRUE, fig.width=6, fig.height=4)

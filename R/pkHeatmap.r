@@ -72,5 +72,5 @@ pkHeatmap <- function(mat=NULL, xrange=NULL, yrange=NULL, xlimit=NULL, ylimit=NU
   if (makebox){
     box(lwd=axislwd)
   }
-  return(NULL)
+
 }
