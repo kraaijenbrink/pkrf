@@ -57,12 +57,15 @@ pre{
 	background-color: #eaf5ff;
 	border-color: #d0dbe5;
 	border: 1;
+	font-family: "Consolas", monospace;
 }
 .hljs{
-	color: #474756;
+	color: #3b3b47;
 }
 code{
 	font-family: "Consolas", monospace;
+	background-color: #eaf5ff !important;
+	color: #232365;
 }
 .column-left{
   float: left;
@@ -101,6 +104,9 @@ code{
 	padding-left: 15px;
     text-indent: -15px;
 	margin-bottom: 4px;
+}
+#mhlogo{
+	zoom: reset;
 }
 }
 

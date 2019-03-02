@@ -28,5 +28,5 @@ pkShadowText(x, y = NULL, labels, col = "white", bg = "black",
 Vector with hex colors strings.
 }
 \description{
-Plot text labels with a different color shadow or faked outline. Function taken from `TeachingDemos` package.
+Plot text labels with a different color shadow or faked outline. Function taken from \code{TeachingDemos} package.
 }

@@ -4,7 +4,7 @@
 
 #' Plot shadowed text labels
 #'
-#' Plot text labels with a different color shadow or faked outline. Function taken from `TeachingDemos` package.
+#' Plot text labels with a different color shadow or faked outline. Function taken from \code{TeachingDemos} package.
 #' @param x x position
 #' @param y y position
 #' @param labels text labels
