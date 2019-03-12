@@ -9,8 +9,5 @@ License: GPL-2
 Encoding: UTF-8
 NeedsCompilation: no
 URL: http://www.uu.nl/staff/PDAKraaijenbrink
-Imports:
-    raster,
-    googledrive
 RoxygenNote: 6.1.1
 LazyData: true
