@@ -64,8 +64,6 @@ pre{
 }
 code{
 	font-family: "Consolas", monospace;
-	background-color: #eaf5ff !important;
-	color: #232365;
 }
 .column-left{
   float: left;

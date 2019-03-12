@@ -4,8 +4,7 @@ Title: Philip Kraaijenbrink's R functions
 Description: Helper functions of all sorts.
 Author: Philip Kraaijenbrink <p.d.a.kraaijenbrink@uu.nl>
 Maintainer: Philip Kraaijenbrink <p.d.a.kraaijenbrink@uu.nl>
-Depends:
-    R (>= 2.15.0)
+Depends: R (>= 2.15.0)
 License: GPL-2
 Encoding: UTF-8
 NeedsCompilation: no
