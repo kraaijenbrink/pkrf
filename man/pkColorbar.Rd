@@ -6,7 +6,7 @@
 \usage{
 pkColorbar(breaks = seq(0, 1, 0.1), colors = gray.colors(length(breaks)
   - 1), barlength = 0.5, barlwd = 0.5, axislab = "Colorscale",
-  axislabline = 2.25, locut = F, hicut = F, slantwidth = 0.1,
+  axislabline = 2.25, locut = F, hicut = F, slantwidth = 0.05,
   smallticks = F, axisbreaks = breaks, axisbreaklab = axisbreaks,
   tck1 = -0.015, tck2 = -0.03, axiscex = 0.8, labelcex = 1,
   pmgp = c(2.5, 0.66, 0), pmar = c(3, 0.5, 0.5, 0.5), ...)
