@@ -11,8 +11,9 @@
 #' @param barlwd line width for color bar
 #' @param axislab axis label for the colorbar
 #' @param axislabline spacing for the axis label
-#' @param locut should the lower limit represent a cutoff? (boolean)
-#' @param hicut should the higher limit represent a cutoff? (boolean)
+#' @param locut should the lower limit represent a slanted cutoff? (boolean)
+#' @param hicut should the higher limit represent a slanted cutoff? (boolean)
+#' @param slantwidth width of the slanted cutoff as a fraction of the total bar width (numeric)
 #' @param smallticks plot small unlabeled ticks for each break (boolean)
 #' @param axisbreaks labelled break values to use in the colorbar axis
 #' @param axisbreaklab labels for the axisbreaks 
@@ -25,28 +26,38 @@
 #' @param ... other arguments passed to axis function
 #' @return plotted colorbar
 #' @export
-pkColorbar <- function(breaks=seq(0,1,0.1),
-                         colors=gray.colors(length(breaks)-1),
-                         barlength=0.5,
-                         barlwd=0.5,
-                         axislab='Colorscale',
-                         axislabline=1.8,
-                         locut=F,
-                         hicut=F,
-                         smallticks=F,
-                         axisbreaks=breaks,
-                         axisbreaklab=axisbreaks,
-                         tck1=-0.015,
-                         tck2=-0.03,
-                         axiscex=0.7,
-                         labelcex=1.0,
-                         pmgp=c(2.5,0.66,0),
-                         pmar=c(3,0.5,0.5,0.5),
-                         ...
-                         ){
+pkColorbar <- function(breaks       = seq(0,1,0.1),
+                       colors       = gray.colors(length(breaks)-1),
+                       barlength    = 0.5,
+                       barlwd       = 0.5,
+                       axislab      = 'Colorscale',
+                       axislabline  = 2.25,
+                       locut        = F,
+                       hicut        = F,
+                       slantwidth   = 0.1, 
+                       smallticks   = F,
+                       axisbreaks   = breaks,
+                       axisbreaklab = axisbreaks,
+                       tck1         = -0.015,
+                       tck2         = -0.03,
+                       axiscex      = 0.8,
+                       labelcex     = 1.0,
+                       pmgp         = c(2.5,0.66,0),
+                       pmar         = c(3,0.5,0.5,0.5),
+                       ...
+                       ){
 
-op <- par('mgp','mar','xpd')
-par(mgp=pmgp, mar=pmar, xpd=NA)
+# set and store par
+op <- par(mgp=pmgp, mar=pmar, xpd=NA)
+
+bspan <- diff(range(breaks))
+if (locut){
+  breaks <- c(breaks[1]-bspan*slantwidth, breaks)
+}
+if (hicut){
+  breaks <- c(breaks, tail(breaks,1)+bspan*slantwidth)
+}
+
 
 # get polygon coordinates
 px.outer <- c(breaks,rev(breaks))
@@ -85,7 +96,8 @@ if(smallticks){axis(1,at=axisticks, label=NA, tck=tck1, lwd=barlwd)}
 axis(1,at=axisbreaks, labels=axisbreaklab, tck=tck2, cex.axis=axiscex, lwd=barlwd, ...)
 mtext(axislab,1, line=axislabline,cex=labelcex)
 
-par(mgp=op$mgp, mar=op$mar, xpd=op$xpd)
+# restore par
+par(op)
 
-return(NULL)
+return(invisible())
 }

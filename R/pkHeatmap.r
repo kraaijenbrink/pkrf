@@ -58,11 +58,16 @@ pkHeatmap <- function(mat=NULL, xrange=NULL, yrange=NULL, xlimit=NULL, ylimit=NU
     }
   }
   
+  # set zlimit
+  zlimit <- range(mat)
+  if (!is.null(locut)){zlimit[1] <- locut}
+  if (!is.null(hicut)){zlimit[2] <- hicut}
+  
   # get exact border coordinates
   if (is.null(xlimit)){xlimit <- c(xseq[1]-0.5*diff(xseq[1:2]), tail(xseq,1)+0.5*diff(xseq[1:2]))}
   if (is.null(ylimit)){ylimit <- c(yseq[1]-0.5*diff(yseq[1:2]), tail(yseq,1)+0.5*diff(yseq[1:2]))}
   image(xseq,yseq, pdat, col=colramp, axes=F, xaxs='i', yaxs='i',
-        xlim=xlimit, ylim=ylimit,
+        xlim=xlimit, ylim=ylimit, zlim=zlimit,
         ...)
   
   if (maketicks){

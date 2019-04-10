@@ -15,3 +15,24 @@ output:
 bibliography: E:/Dropbox/Literature/BibTeX_files/library.bib
 ---
 
+<!-- Initial setup chunk to define knitr options -->
+```{r setup, echo=F, message=F, warning=F, include=F}
+library(knitr); library(ggplot2); library(pkrf)
+rootdir <- 'ENTER WORK DIRECTORY HERE'
+opts_chunk$set(
+  root.dir=rootdir,
+  tidy=FALSE,
+  warning=FALSE,
+  message=FALSE,
+  comment=NA,
+  verbose=FALSE,
+  fig.width=7,
+  fig.height=4,
+  fig.align='center',
+  dev.args=list(bg="white"))
+opts_knit$set(root.dir=rootdir)
+```
+
+<!-- ------------------------------------------------------------------------------ -->
+
+

@@ -15,22 +15,31 @@ output:
     # code_folding: show
 ---
 
-
-<!-- Chunck to setup some defaults for knitr and ggplot-->
+<!-- Initial setup chunk to define options -->
 ```{r setup, echo=F, message=F, warning=F, include=F}
-library(knitr); library(pkrf); library(ggplot2)
-knitr::opts_chunk$set(tidy=FALSE, warning=FALSE, message=FALSE, cache=F, 
-               comment=NA, verbose=TRUE, fig.width=6, fig.height=4)
+library(knitr); library(ggplot2); library(pkrf)
+rootdir <- 'ENTER WORK DIRECTORY HERE'
+opts_chunk$set(
+  root.dir=rootdir,
+  tidy=FALSE,
+  warning=FALSE,
+  message=FALSE,
+  comment=NA,
+  cache=F,
+  verbose=FALSE,
+  fig.width=6,
+  fig.height=4,
+  fig.align='center',
+  dev.args=list(bg="transparent"))
+opts_knit$set(root.dir=rootdir)
 
-# set background to transparent, for base plot and ggplot
-knitr::opts_chunk$set(dev.args=list(bg="transparent"))
+
 theme_set(theme_light(base_size=12))
 theme_update(panel.background = element_rect(fill = "transparent", colour = NA),
              plot.background  = element_rect(fill = "transparent", colour = NA))
 ```
 
-
-
+<!-- ------------------------------------------------------------------------------ -->
 
 ## This is a slide | With a subtitle
 

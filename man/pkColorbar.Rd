@@ -6,10 +6,10 @@
 \usage{
 pkColorbar(breaks = seq(0, 1, 0.1), colors = gray.colors(length(breaks)
   - 1), barlength = 0.5, barlwd = 0.5, axislab = "Colorscale",
-  axislabline = 1.8, locut = F, hicut = F, smallticks = F,
-  axisbreaks = breaks, axisbreaklab = axisbreaks, tck1 = -0.015,
-  tck2 = -0.03, axiscex = 0.7, labelcex = 1, pmgp = c(2.5, 0.66,
-  0), pmar = c(3, 0.5, 0.5, 0.5), ...)
+  axislabline = 2.25, locut = F, hicut = F, slantwidth = 0.1,
+  smallticks = F, axisbreaks = breaks, axisbreaklab = axisbreaks,
+  tck1 = -0.015, tck2 = -0.03, axiscex = 0.8, labelcex = 1,
+  pmgp = c(2.5, 0.66, 0), pmar = c(3, 0.5, 0.5, 0.5), ...)
 }
 \arguments{
 \item{breaks}{vector of break values}
@@ -24,9 +24,11 @@ pkColorbar(breaks = seq(0, 1, 0.1), colors = gray.colors(length(breaks)
 
 \item{axislabline}{spacing for the axis label}
 
-\item{locut}{should the lower limit represent a cutoff? (boolean)}
+\item{locut}{should the lower limit represent a slanted cutoff? (boolean)}
 
-\item{hicut}{should the higher limit represent a cutoff? (boolean)}
+\item{hicut}{should the higher limit represent a slanted cutoff? (boolean)}
+
+\item{slantwidth}{width of the slanted cutoff as a fraction of the total bar width (numeric)}
 
 \item{smallticks}{plot small unlabeled ticks for each break (boolean)}
 
