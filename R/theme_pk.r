@@ -31,8 +31,8 @@ theme_pk <- function(base_size = 10,
     
       # plot panel
       panel.border         = element_rect(fill=NA, color="black", size = rel(alwd)),
-      panel.grid.major     = element_line(linetype = "solid", size=rel(alwd), colour="gray70"),   
-      panel.grid.minor     = element_line(linetype = "solid", size=rel(alwd*0.65), colour="gray85"), 
+      panel.grid.major     = element_line(linetype = "solid", size=rel(alwd), colour="gray65"),   
+      panel.grid.minor     = element_line(linetype = "solid", size=rel(alwd*0.65), colour="gray80"), 
 
       # axis stuff
       axis.title           = element_text(color='black', size = rel(1.0)),
@@ -46,14 +46,14 @@ theme_pk <- function(base_size = 10,
 
       # legend
       legend.justification = 'top',
-      legend.margin        = margin(t=0,b=6),
-      legend.title         = element_text(colour="black", size=rel(0.8), face='bold'),
-      legend.text          = element_text(colour="black", size=rel(0.8)),
+      legend.margin        = margin(t=0,b=4),
+      legend.title         = element_text(colour="black", size=rel(0.8), face='bold', hjust=0),
+      legend.text          = element_text(colour="black", size=rel(0.8) , hjust=0),
       legend.key.size      = unit(base_size*1.2, "pt")
       
     )
 
-  # conditional changes
+   # conditional changes
   if (!grid){
     outtheme <- outtheme %+replace% theme(
       panel.grid.major     = element_blank(),   

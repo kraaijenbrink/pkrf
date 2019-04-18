@@ -59,7 +59,7 @@ pkPal <- function(name='MntHydro', number=0, reversed=F, random=F, show=F){
     
     spac <- 0.33
     all <- lapply(namelist, function(x) (paste0('#',getPal(x))))
-    windows(600,900, bg='#2d2d2d')
+    x11(canvas='#2d2d2d')
     op  <- par(mar=c(0.5,8,0.5,1))
     plot(NA,axes=F,xlab='',ylab='',ylim=c(0,length(namelist)+1), xlim=c(0,1), xaxs='i', yaxs='i')
     for (i in 1:length(namelist)){
