@@ -27,7 +27,7 @@ theme_pk <- function(base_size = 10,
       # main labels
       plot.title           = element_text(color='black', face = "bold", hjust = 0, margin=margin(0,0,4,0), size=rel(1.1)),
       plot.subtitle        = element_text(face = "plain", hjust=0, size=rel(1.0), margin=margin(0,0,6,0)),
-      plot.caption         = element_text(face = "plain", hjust=0, size=rel(0.6)),
+      plot.caption         = element_text(face = "plain", hjust=0, size=rel(0.7), margin=margin(t=2)),
     
       # plot panel
       panel.border         = element_rect(fill=NA, color="black", size = rel(alwd)),
