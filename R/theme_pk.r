@@ -1,6 +1,4 @@
-
-
-#' Custom ggplot2 theme
+#' Custom ggplot2 theme PK style
 #'
 #' @import ggplot2
 #' @param base_size base point size
@@ -11,15 +9,13 @@
 #' @param yrot rotate y axis tick labelsl 90 degrees (boolean)
 #' @return
 #' @export
-#'
-#' @examples
 theme_pk <- function(base_size = 10,
-                    base_family = "",
-                    base_line_size = base_size / 22,
-                    base_rect_size = base_size / 22,
-                    alwd = 0.5,
-                    grid = F,
-                    yrot = F){
+                     base_family = "",
+                     base_line_size = base_size / 22,
+                     base_rect_size = base_size / 22,
+                     alwd = 0.5,
+                     grid = F,
+                     yrot = F){
   outtheme <- theme_bw(base_size = base_size, base_family = base_family,
                        base_line_size = base_line_size) %+replace%
     theme(
@@ -68,4 +64,3 @@ theme_pk <- function(base_size = 10,
   
   return(outtheme)
 }
-  

@@ -51,7 +51,7 @@ pkRamp <- function(name='parula', number=100, reversed=F, show=F){
 
   
   if (show){ # make plot of available ramps
-    x11(canvas='#2d2d2d')
+    x11(bg='#2d2d2d')
     op  <- par(mar=c(0.5,6,0.5,1))
     all <- do.call(rbind,lapply(namelist, function(x) colorRampPalette(paste0('#',getPal(x)))(number)))
     plot(NA,axes=F,xlab='',ylab='',ylim=c(0,length(namelist)+1), xlim=c(1,number), xaxs='i', yaxs='i')
