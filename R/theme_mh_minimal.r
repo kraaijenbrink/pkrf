@@ -2,7 +2,7 @@
 #'
 #' @import ggplot2
 #' @param base_size base point size
-#' @param base_family base font family (best to use \code{showtext} and Segoe UI fonts)
+#' @param base_family base font family (best to use \code{showtext} package and Segoe UI fonts)
 #' @param base_line_size = base line size
 #' @param base_rect_size = base rect size
 #' @param grid draw major and minor grid lines (boolean)
