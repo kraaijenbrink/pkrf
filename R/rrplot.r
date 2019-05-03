@@ -11,5 +11,6 @@
 #' @return Plot of the raster that is correctly displayed
 #' @export
 rrplot <- function(x,...){
+  require(raster)
   plot(x,useRaster=F,...)
 }

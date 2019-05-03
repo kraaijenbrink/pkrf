@@ -7,7 +7,7 @@
 #' @param base_rect_size = base rect size
 #' @param grid draw major and minor grid lines (boolean)
 #' @param yrot rotate y axis tick labelsl 90 degrees (boolean)
-#' @return
+#' @return \code{ggplot2} theme opbject
 #' @export
 theme_mh_minimal <- function(base_size = 10,
                     base_family = "",

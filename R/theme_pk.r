@@ -7,7 +7,7 @@
 #' @param base_rect_size = base rect size
 #' @param grid draw major and minor grid lines (boolean)
 #' @param yrot rotate y axis tick labelsl 90 degrees (boolean)
-#' @return
+#' @return \code{ggplot2} theme opbject
 #' @export
 theme_pk <- function(base_size = 10,
                      base_family = "",
@@ -45,8 +45,13 @@ theme_pk <- function(base_size = 10,
       legend.margin        = margin(t=0,b=4),
       legend.title         = element_text(colour="black", size=rel(0.8), face='bold', hjust=0),
       legend.text          = element_text(colour="black", size=rel(0.8) , hjust=0),
-      legend.key.size      = unit(base_size*1.2, "pt")
+      legend.key.size      = unit(base_size*1.2, "pt"),
       
+      # # facet
+      # strip.background     = element_rect(fill='gray85', color='black', size=rel(alwd)),
+      # strip.text           = element_text(color='black', face = "bold", size=rel(0.8)),
+      # strip.text.x         = element_text(margin=margin(b=2, t=2), hjust=0.5, vjust=0.5),
+      # strip.text.y         = element_text(margin=margin(l=2, r=2), hjust=0.5, vjust=0.5, angle=-90)
     )
 
    # conditional changes
