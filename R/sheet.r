@@ -8,12 +8,14 @@
 #' @examples
 #' sheet('topics')
 #' sheet('ggplot2')
+#' sheet('colors')
 #' 
 sheet <- function(topic='topics'){
   
   topic <- tolower(topic)
   
   topics <- list(
+    colors=NA,
     `base-r`='https://github.com/rstudio/cheatsheets/raw/master/base-r.pdf',
     `advanced-r`='https://www.rstudio.com/wp-content/uploads/2016/02/advancedR.pdf',
     forcats='https://github.com/rstudio/cheatsheets/raw/master/factors.pdf',
@@ -39,6 +41,7 @@ sheet <- function(topic='topics'){
   )
   
   srcurl <- switch(topic,
+                colors=NA,
                 `base-r`='https://github.com/rstudio/cheatsheets/raw/master/base-r.pdf',
                 `advanced-r`='https://www.rstudio.com/wp-content/uploads/2016/02/advancedR.pdf',
                 forcats='https://github.com/rstudio/cheatsheets/raw/master/factors.pdf',
@@ -61,12 +64,13 @@ sheet <- function(topic='topics'){
                 readr='https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf',
                 cdo='https://code.mpimet.mpg.de/projects/cdo/embedded/cdo_refcard.pdf',
                 latex='https://wch.github.io/latexsheet/latexsheet-a4.pdf'
-                
   )
   
   available <- sort(names(topics))
   if (topic == 'topics'){
     cat(sprintf('\nSelect a topic to display. Available topics are:\n\n- "%s"\n\n',paste(available, collapse='"\n- "')))
+  }else if (topic == 'colors'){
+    pkrf::colorList()
   }else if (topic %in% names(topics)){
     dstfile <- tempfile(pattern='cheatsheet_',fileext='.pdf')
     download.file(srcurl, dstfile, quiet=T, mode='wb')

@@ -15,5 +15,6 @@ Display a pdf cheat sheet for various R topics and packages
 \examples{
 sheet('topics')
 sheet('ggplot2')
+sheet('colors')
 
 }
