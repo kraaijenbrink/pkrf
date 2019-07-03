@@ -48,3 +48,8 @@
 #' @source \href{https://www.nature.com/articles/nature23878}{Kraaijenbrink et al., 2017}
 "glaciers"
 
+#' Golden ratio.
+#'
+#' \href{https://en.wikipedia.org/wiki/Golden_ratio}{Wikipedia}
+#'
+"goldenratio"
