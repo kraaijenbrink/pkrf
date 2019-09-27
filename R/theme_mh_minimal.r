@@ -7,6 +7,7 @@
 #' @param base_rect_size = base rect size
 #' @param grid draw major and minor grid lines (boolean)
 #' @param yrot rotate y axis tick labelsl 90 degrees (boolean)
+#' @param strip Use dark blue facet strip with white text ("dark") or white strip with blue text ("light")
 #' @return \code{ggplot2} theme opbject
 #' @export
 theme_mh_minimal <- function(base_size = 10,
@@ -15,7 +16,8 @@ theme_mh_minimal <- function(base_size = 10,
                     base_rect_size = base_size / 22,
                     alwd = 0.75,
                     grid = F,
-                    yrot = F){
+                    yrot = F,
+                    strip = 'dark'){
   dcol <- '#232365'
   bcol <- '#deebf6'
   outtheme <- theme_bw(base_size = base_size, base_family = base_family,
@@ -48,8 +50,11 @@ theme_mh_minimal <- function(base_size = 10,
       legend.margin        = margin(t=0,b=4),
       legend.title         = element_text(color= dcol, size=rel(0.8), face='bold', hjust=0),
       legend.text          = element_text(color= dcol, size=rel(0.8) , hjust=0),
-      legend.key.size      = unit(base_size*1.2, "pt")
+      legend.key.size      = unit(base_size*1.2, "pt"),
       
+      # facet strips
+      strip.background=element_rect(fill=pkPal()[1],colour=NA),
+      strip.text=element_text(colour='white', face='bold', hjust=0, vjust=1, margin=margin(4,4,4,4), size=rel(0.8))
     )
 
    # conditional changes
@@ -63,6 +68,13 @@ theme_mh_minimal <- function(base_size = 10,
     outtheme <- outtheme %+replace% theme(
       axis.text.y          = element_text(margin=margin(0,4,0,0), angle=90) 
     )
+  }
+  if (strip=='light'){
+    outtheme <- outtheme %+replace% theme(
+      strip.background=element_rect(fill='white', colour=NA),
+      strip.text=element_text(colour=pkPal()[1], face='bold', hjust=0, vjust=1, margin=margin(4,4,4,0), size=rel(0.8)) 
+    )
+    
   }
   
   return(outtheme)

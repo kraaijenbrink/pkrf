@@ -6,7 +6,7 @@
 \usage{
 theme_mh_minimal(base_size = 10, base_family = "",
   base_line_size = base_size/22, base_rect_size = base_size/22,
-  alwd = 0.75, grid = F, yrot = F)
+  alwd = 0.75, grid = F, yrot = F, strip = "dark")
 }
 \arguments{
 \item{base_size}{base point size}
@@ -20,6 +20,8 @@ theme_mh_minimal(base_size = 10, base_family = "",
 \item{grid}{draw major and minor grid lines (boolean)}
 
 \item{yrot}{rotate y axis tick labelsl 90 degrees (boolean)}
+
+\item{strip}{Use dark blue facet strip with white text ("dark") or white strip with blue text ("light")}
 }
 \value{
 \code{ggplot2} theme opbject
