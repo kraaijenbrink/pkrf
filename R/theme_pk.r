@@ -5,8 +5,9 @@
 #' @param base_family base font family
 #' @param base_line_size = base line size
 #' @param base_rect_size = base rect size
-#' @param grid draw major and minor grid lines (boolean)
+#' @param grid draw no (\cpde{0}), only major ((\cpde{1})) or major and minor grid lines (\cpde{2})
 #' @param yrot rotate y axis tick labelsl 90 degrees (boolean)
+#' @param strip Use gray facet strip with white text ("dark") or transparent strip with black text ("light")
 #' @return \code{ggplot2} theme opbject
 #' @export
 theme_pk <- function(base_size = 10,
@@ -15,7 +16,8 @@ theme_pk <- function(base_size = 10,
                      base_rect_size = base_size / 22,
                      alwd = 0.5,
                      grid = F,
-                     yrot = F){
+                     yrot = F,
+                     strip = 'light'){
   outtheme <- theme_bw(base_size = base_size, base_family = base_family,
                        base_line_size = base_line_size) %+replace%
     theme(
@@ -27,8 +29,8 @@ theme_pk <- function(base_size = 10,
     
       # plot panel
       panel.border         = element_rect(fill=NA, color="black", size = rel(alwd)),
-      panel.grid.major     = element_line(linetype = "solid", size=rel(alwd), colour="gray65"),   
-      panel.grid.minor     = element_line(linetype = "solid", size=rel(alwd*0.65), colour="gray80"), 
+      panel.grid.major     = element_blank(),   
+      panel.grid.minor     = element_blank(), 
 
       # axis stuff
       axis.title           = element_text(color='black', size = rel(1.0)),
@@ -47,23 +49,32 @@ theme_pk <- function(base_size = 10,
       legend.text          = element_text(colour="black", size=rel(0.8) , hjust=0),
       legend.key.size      = unit(base_size*1.2, "pt"),
       
-      # # facet
-      # strip.background     = element_rect(fill='gray85', color='black', size=rel(alwd)),
-      # strip.text           = element_text(color='black', face = "bold", size=rel(0.8)),
-      # strip.text.x         = element_text(margin=margin(b=2, t=2), hjust=0.5, vjust=0.5),
-      # strip.text.y         = element_text(margin=margin(l=2, r=2), hjust=0.5, vjust=0.5, angle=-90)
+      # facet strips
+      strip.background=element_rect(fill='gray40',colour='black'),
+      strip.text=element_text(colour='white', face='bold', hjust=0, vjust=1, margin=margin(4,4,4,4), size=rel(0.8))
     )
 
    # conditional changes
-  if (!grid){
+  if (grid==1){
     outtheme <- outtheme %+replace% theme(
-      panel.grid.major     = element_blank(),   
-      panel.grid.minor     = element_blank() 
+      panel.grid.major     = element_line(linetype = "solid", size=rel(alwd), colour="gray90")
+    )
+  }
+  if (grid==2){
+    outtheme <- outtheme %+replace% theme(
+      panel.grid.major     = element_line(linetype = "solid", size=rel(alwd), colour="gray90"),
+      panel.grid.minor     = element_line(linetype = "solid", size=rel(alwd*0.65), colour="gray90")
     )
   }
   if (yrot){
     outtheme <- outtheme %+replace% theme(
       axis.text.y          = element_text(margin=margin(0,4,0,0), angle=90) 
+    )
+  }
+  if (strip=='light'){
+    outtheme <- outtheme %+replace% theme(
+      strip.background=element_rect(fill='#FFFFFF00', colour=NA),
+      strip.text=element_text(colour='black', face='bold', hjust=0, vjust=1, margin=margin(4,4,4,0), size=rel(0.8)) 
     )
   }
   

@@ -5,7 +5,7 @@
 #' @param base_family base font family (best to use \code{showtext} package and Segoe UI fonts)
 #' @param base_line_size = base line size
 #' @param base_rect_size = base rect size
-#' @param grid draw major and minor grid lines (boolean)
+#' @param grid draw no (\cpde{0}), only major ((\cpde{1})) or major and minor grid lines (\cpde{2})
 #' @param yrot rotate y axis tick labelsl 90 degrees (boolean)
 #' @param strip Use dark blue facet strip with white text ("dark") or white strip with blue text ("light")
 #' @return \code{ggplot2} theme opbject
@@ -32,8 +32,8 @@ theme_mh_minimal <- function(base_size = 10,
       # plot panel
       panel.background     = element_rect(fill=bcol, color=NA),
       panel.border         = element_rect(fill=NA, color=NA, size = rel(alwd)),
-      panel.grid.major     = element_line(linetype = "solid", size=rel(alwd), colour="white"),   
-      panel.grid.minor     = element_line(linetype = "solid", size=rel(alwd*0.65), colour="white"), 
+      panel.grid.major     = element_blank(),   
+      panel.grid.minor     = element_blank(), 
 
       # axis stuff
       axis.title           = element_text(color= dcol, size = rel(1.0)),
@@ -58,10 +58,15 @@ theme_mh_minimal <- function(base_size = 10,
     )
 
    # conditional changes
-  if (!grid){
+  if (grid==1){
     outtheme <- outtheme %+replace% theme(
-      panel.grid.major     = element_blank(),   
-      panel.grid.minor     = element_blank() 
+      panel.grid.major     = element_line(linetype = "solid", size=rel(alwd), colour="white")
+    )
+  }
+  if (grid==2){
+    outtheme <- outtheme %+replace% theme(
+      panel.grid.major     = element_line(linetype = "solid", size=rel(alwd), colour="white"),
+      panel.grid.minor     = element_line(linetype = "solid", size=rel(alwd*0.65), colour="white")
     )
   }
   if (yrot){
@@ -71,10 +76,9 @@ theme_mh_minimal <- function(base_size = 10,
   }
   if (strip=='light'){
     outtheme <- outtheme %+replace% theme(
-      strip.background=element_rect(fill='white', colour=NA),
+      strip.background=element_rect(fill='#FFFFFF00', colour=NA),
       strip.text=element_text(colour=pkPal()[1], face='bold', hjust=0, vjust=1, margin=margin(4,4,4,0), size=rel(0.8)) 
     )
-    
   }
   
   return(outtheme)
