@@ -5,7 +5,7 @@
 #' @param base_family base font family
 #' @param base_line_size = base line size
 #' @param base_rect_size = base rect size
-#' @param grid draw no (\cpde{0}), only major ((\cpde{1})) or major and minor grid lines (\cpde{2})
+#' @param grid draw no (\code{0}), only major ((\code{1})) or major and minor grid lines (\code{2})
 #' @param yrot rotate y axis tick labelsl 90 degrees (boolean)
 #' @param strip Use gray facet strip with white text ("dark") or transparent strip with black text ("light")
 #' @return \code{ggplot2} theme opbject
