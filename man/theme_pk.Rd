@@ -6,7 +6,7 @@
 \usage{
 theme_pk(base_size = 10, base_family = "",
   base_line_size = base_size/22, base_rect_size = base_size/22,
-  alwd = 0.5, grid = F, yrot = F)
+  alwd = 0.5, grid = F, yrot = F, strip = "light")
 }
 \arguments{
 \item{base_size}{base point size}
@@ -17,9 +17,11 @@ theme_pk(base_size = 10, base_family = "",
 
 \item{base_rect_size}{= base rect size}
 
-\item{grid}{draw major and minor grid lines (boolean)}
+\item{grid}{draw no (\cpde{0}), only major ((\cpde{1})) or major and minor grid lines (\cpde{2})}
 
 \item{yrot}{rotate y axis tick labelsl 90 degrees (boolean)}
+
+\item{strip}{Use gray facet strip with white text ("dark") or transparent strip with black text ("light")}
 }
 \value{
 \code{ggplot2} theme opbject

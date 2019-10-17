@@ -17,7 +17,7 @@ theme_mh_minimal(base_size = 10, base_family = "",
 
 \item{base_rect_size}{= base rect size}
 
-\item{grid}{draw major and minor grid lines (boolean)}
+\item{grid}{draw no (\cpde{0}), only major ((\cpde{1})) or major and minor grid lines (\cpde{2})}
 
 \item{yrot}{rotate y axis tick labelsl 90 degrees (boolean)}
 

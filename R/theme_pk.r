@@ -28,7 +28,7 @@ theme_pk <- function(base_size = 10,
       plot.caption         = element_text(face = "plain", hjust=0, size=rel(0.7), margin=margin(t=2)),
     
       # plot panel
-      panel.border         = element_rect(fill=NA, color="black", size = rel(alwd)),
+      panel.border         = element_rect(fill=NA, color="black", size = rel(alwd*2)),  # use double lwd to fix cutoff caused by clip='on'
       panel.grid.major     = element_blank(),   
       panel.grid.minor     = element_blank(), 
 
