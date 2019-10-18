@@ -3,11 +3,18 @@
 #' @import ggplot2
 #' @param base_size base point size
 #' @param base_family base font family
-#' @param base_line_size = base line size
-#' @param base_rect_size = base rect size
-#' @param grid draw no (\code{0}), only major ((\code{1})) or major and minor grid lines (\code{2})
-#' @param yrot rotate y axis tick labelsl 90 degrees (boolean)
-#' @param strip Use gray facet strip with white text ("dark") or transparent strip with black text ("light")
+#' @param base_line_size base line size
+#' @param base_rect_size base rect size
+#' @param alwd line width used for axes, ticks and panel border
+#' @param grid draw no (\code{0}), only major ((\code{1})) or
+#' major and minor grid lines (\code{2})
+#' @param yrot rotate y axis tick labelsl 90 degrees (logical)
+#' @param strip Use gray facet strip with white text ("dark") or
+#' transparent strip with black text ("light")
+#' @param double_border Use double line width on panel border (logical).
+#' This is necessary in order to get equal line width for the ticks and border
+#' when exporting to png/pdf using \code{ggsave} and the
+#' (default) coordinate option \code{clip='on'}.
 #' @return \code{ggplot2} theme opbject
 #' @export
 theme_pk <- function(base_size = 10,
@@ -17,7 +24,8 @@ theme_pk <- function(base_size = 10,
                      alwd = 0.5,
                      grid = F,
                      yrot = F,
-                     strip = 'light'){
+                     strip = 'light',
+                     double_border=F){
   outtheme <- theme_bw(base_size = base_size, base_family = base_family,
                        base_line_size = base_line_size) %+replace%
     theme(
@@ -28,7 +36,7 @@ theme_pk <- function(base_size = 10,
       plot.caption         = element_text(face = "plain", hjust=0, size=rel(0.7), margin=margin(t=2)),
     
       # plot panel
-      panel.border         = element_rect(fill=NA, color="black", size = rel(alwd*2)),  # use double lwd to fix cutoff caused by clip='on'
+      panel.border         = element_rect(fill=NA, color="black", size = rel(alwd)),
       panel.grid.major     = element_blank(),   
       panel.grid.minor     = element_blank(), 
 
@@ -75,6 +83,11 @@ theme_pk <- function(base_size = 10,
     outtheme <- outtheme %+replace% theme(
       strip.background=element_rect(fill='#FFFFFF00', colour=NA),
       strip.text=element_text(colour='black', face='bold', hjust=0, vjust=1, margin=margin(4,4,4,0), size=rel(0.8)) 
+    )
+  }
+  if (double_border){
+    outtheme <- outtheme %+replace% theme(
+      panel.border = element_rect(fill=NA, color="black", size = rel(alwd*2))
     )
   }
   

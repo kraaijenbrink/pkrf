@@ -6,22 +6,32 @@
 \usage{
 theme_pk(base_size = 10, base_family = "",
   base_line_size = base_size/22, base_rect_size = base_size/22,
-  alwd = 0.5, grid = F, yrot = F, strip = "light")
+  alwd = 0.5, grid = F, yrot = F, strip = "light",
+  double_border = F)
 }
 \arguments{
 \item{base_size}{base point size}
 
 \item{base_family}{base font family}
 
-\item{base_line_size}{= base line size}
+\item{base_line_size}{base line size}
 
-\item{base_rect_size}{= base rect size}
+\item{base_rect_size}{base rect size}
 
-\item{grid}{draw no (\code{0}), only major ((\code{1})) or major and minor grid lines (\code{2})}
+\item{alwd}{line width used for axes, ticks and panel border}
 
-\item{yrot}{rotate y axis tick labelsl 90 degrees (boolean)}
+\item{grid}{draw no (\code{0}), only major ((\code{1})) or
+major and minor grid lines (\code{2})}
 
-\item{strip}{Use gray facet strip with white text ("dark") or transparent strip with black text ("light")}
+\item{yrot}{rotate y axis tick labelsl 90 degrees (logical)}
+
+\item{strip}{Use gray facet strip with white text ("dark") or
+transparent strip with black text ("light")}
+
+\item{double_border}{Use double line width on panel border (logical).
+This is necessary in order to get equal line width for the ticks and border
+when exporting to png/pdf using \code{ggsave} and the
+(default) coordinate option \code{clip='on'}.}
 }
 \value{
 \code{ggplot2} theme opbject

@@ -3,8 +3,9 @@
 #' @import ggplot2
 #' @param base_size base point size
 #' @param base_family base font family (best to use \code{showtext} package and Segoe UI fonts)
-#' @param base_line_size = base line size
-#' @param base_rect_size = base rect size
+#' @param base_line_size base line size
+#' @param base_rect_size base rect size
+#' @param alwd line width used for axes, ticks and panel border
 #' @param grid draw no (\code{0}), only major ((\code{1})) or major and minor grid lines (\code{2})
 #' @param yrot rotate y axis tick labelsl 90 degrees (boolean)
 #' @param strip Use dark blue facet strip with white text ("dark") or white strip with blue text ("light")

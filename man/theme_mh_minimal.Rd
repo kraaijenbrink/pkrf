@@ -13,9 +13,11 @@ theme_mh_minimal(base_size = 10, base_family = "",
 
 \item{base_family}{base font family (best to use \code{showtext} package and Segoe UI fonts)}
 
-\item{base_line_size}{= base line size}
+\item{base_line_size}{base line size}
 
-\item{base_rect_size}{= base rect size}
+\item{base_rect_size}{base rect size}
+
+\item{alwd}{line width used for axes, ticks and panel border}
 
 \item{grid}{draw no (\code{0}), only major ((\code{1})) or major and minor grid lines (\code{2})}
 
