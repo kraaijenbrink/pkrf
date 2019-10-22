@@ -13,7 +13,7 @@
 #' 
 #' @return no function return
 #' @export
-pkRastplot = function(x, lcut=NA, hcut=NA, setNA=NA, useimage=F, ...) {
+plotRast = function(x, lcut=NA, hcut=NA, setNA=NA, useimage=F, ...) {
   
   require(raster)
   
@@ -47,3 +47,9 @@ pkRastplot = function(x, lcut=NA, hcut=NA, setNA=NA, useimage=F, ...) {
   }
   
 }
+
+
+
+#' @rdname plotRast
+#' @export
+pkRastplot <- plotRast

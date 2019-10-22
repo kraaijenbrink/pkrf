@@ -26,7 +26,7 @@
 #' @param ... other arguments passed to axis function
 #' @return plotted colorbar
 #' @export
-pkColorbar <- function(breaks       = seq(0,1,0.1),
+colorBar <- function(breaks       = seq(0,1,0.1),
                        colors       = gray.colors(length(breaks)-1),
                        barlength    = 0.5,
                        barlwd       = 0.5,
@@ -101,3 +101,9 @@ par(op)
 
 return(invisible())
 }
+
+
+
+#' @rdname colorBar
+#' @export
+pkColorbar <- colorBar

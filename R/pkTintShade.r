@@ -9,7 +9,7 @@
 #' @param opt "tint" (lighten) or "shade" (darken)
 #' @return altered (vector of) color(s)
 #' @export
-pkTintShade = function(colors=c('red','green','blue'), opt='shade', factor=0.5) {
+tint = function(colors=c('red','green','blue'), opt='shade', factor=0.5) {
   if(!(opt %in% c('shade','tint'))){stop("Option must be either 'shade' or 'tint'")}
   cols    <- col2rgb(col=colors, alpha=FALSE)
   if (opt=='shade'){
@@ -19,3 +19,9 @@ pkTintShade = function(colors=c('red','green','blue'), opt='shade', factor=0.5) 
   }
   return(rgb(red=outcol[1,],green=outcol[2,],blue=outcol[3,]))
 }
+
+
+
+#' @rdname tint
+#' @export
+pkTintShade <- tint

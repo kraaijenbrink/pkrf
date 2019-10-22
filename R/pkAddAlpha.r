@@ -9,7 +9,7 @@
 #' @param alpha transparency value
 #' @return transparant (vector of) color(s)
 #' @export
-pkAddAlpha = function(colors=c('red','green','blue'), alpha=0.5) {
+addAlpha = function(colors=c('red','green','blue'), alpha=0.5) {
   
   if(alpha<0 | alpha>1) stop("alpha must be between 0 and 1")
   
@@ -23,4 +23,8 @@ pkAddAlpha = function(colors=c('red','green','blue'), alpha=0.5) {
             )
     )
   return(alphacols) 
-  }
+}
+
+#' @rdname addAlpha
+#' @export
+pkAddAlpha <- addAlpha

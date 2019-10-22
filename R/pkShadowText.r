@@ -16,8 +16,7 @@
 #' 
 #' @return Vector with hex colors strings. 
 #' @export
-
-pkShadowText <- function(x, y=NULL, labels, col='white', bg='black',
+shadeText <- function(x, y=NULL, labels, col='white', bg='black',
                        theta=seq(pi/4, 2*pi, length.out=8), r=0.1, ... ) {
   
   xy <- xy.coords(x,y)
@@ -27,4 +26,14 @@ pkShadowText <- function(x, y=NULL, labels, col='white', bg='black',
   for (i in theta) {
     text(xy$x + cos(i)*xo, xy$y + sin(i)*yo, labels, col=bg, ... )
   }
-  text(xy$x, xy$y, labels, col=col, ... ) }
+  text(xy$x, xy$y, labels, col=col, ... )
+  
+}
+
+
+
+#' @rdname shadeText
+#' @export
+pkShadowText <- shadeText
+
+

@@ -13,7 +13,7 @@
 #' 
 #' @return Vector with hex colors strings. 
 #' @export
-pkPal <- function(name='MntHydro', number=0, reversed=F, random=F, show=F){
+pal <- function(name='MntHydro', number=0, reversed=F, random=F, show=F){
   
   namelist <- c('MntHydro','UUmain','UUalt',
                 'Set1','Set2','Set3','Pastel1','Pastel2','Accent','Dark', 'Google','Raven','Muted','Cappuccino',
@@ -92,3 +92,8 @@ pkPal <- function(name='MntHydro', number=0, reversed=F, random=F, show=F){
   }
 }
 
+
+
+#' @rdname pal
+#' @export
+pkPal <- pal

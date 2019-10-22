@@ -13,7 +13,7 @@
 #' @return Vector with hex colors strings. 
 #' @export
 
-pkRamp <- function(name='parula', number=100, reversed=F, show=F){
+ramp <- function(name='parula', number=100, reversed=F, show=F){
   
   namelist <- c('Jet','Parula','Viridis','Inferno','Magma','Plasma','Cividis','ElevAG','WtSpec','RwB','PwG','OwP','Spectral',
                 'ElevNat1','ElevNat2','RwBsoft','RwBpale','Taupe', 'Blues','Greens','BW','MHblues','MHramp')
@@ -74,4 +74,10 @@ pkRamp <- function(name='parula', number=100, reversed=F, show=F){
   
 
 }
+
+
+
+#' @rdname ramp
+#' @export
+pkRamp <- ramp
 

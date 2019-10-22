@@ -21,9 +21,9 @@
 #'
 #' @return plot
 #' @export
-pkHeatmap <- function(mat=NULL, xrange=NULL, yrange=NULL, xlimit=NULL, ylimit=NULL,
-                      colramp=topo.colors(200), maketicks=T, makebox=T, axislwd=0.5,
-                      locut=NULL, hicut=NULL, nacut=F,...){
+heatGrid <- function(mat=NULL, xrange=NULL, yrange=NULL, xlimit=NULL, ylimit=NULL,
+                     colramp=topo.colors(200), maketicks=T, makebox=T, axislwd=0.5,
+                     locut=NULL, hicut=NULL, nacut=F,...){
   
   # setup default data
   testn    <- 25
@@ -79,3 +79,10 @@ pkHeatmap <- function(mat=NULL, xrange=NULL, yrange=NULL, xlimit=NULL, ylimit=NU
   }
 
 }
+
+
+
+
+#' @rdname heatGrid
+#' @export
+pkHeatmap <- heatGrid

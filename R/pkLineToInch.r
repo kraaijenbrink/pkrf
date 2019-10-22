@@ -9,7 +9,13 @@
 #' @param cm Return centimeter instead (logical)
 #' @return Number of inches 
 #' @export
-pkLineToInch <- function(x=1, cm=F){
+lineToInch <- function(x=1, cm=F){
   inches <- par('cin')[2] * par('cex') * par('lheight') * x
   return(ifelse(cm, inches*2.54, inches))
 }
+
+
+
+#' @rdname lineToInch
+#' @export
+pkLineToInch <- lineToInch

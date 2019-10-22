@@ -15,7 +15,7 @@
 #' 
 #' @return string with byte64 data
 #' @export
-pkB64 <- function(pfun, ..., width=200, height=200, res=100, prefix='<img src="data:image/png;base64, ', suffix='">'){
+plotB64 <- function(pfun, ..., width=200, height=200, res=100, prefix='<img src="data:image/png;base64, ', suffix='">'){
   tmpfn <- tempfile('subplot_',fileext='.png')
   png(tmpfn, width=width, height=height, res=res)
   pfun(...)
@@ -23,3 +23,9 @@ pkB64 <- function(pfun, ..., width=200, height=200, res=100, prefix='<img src="d
   b64 <- paste0(prefix, base64enc::base64encode(tmpfn), suffix)
   return(b64)
 }
+
+
+
+#' @rdname plotB64
+#' @export
+pkB64 <- plotB64
