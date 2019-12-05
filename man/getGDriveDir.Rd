@@ -5,16 +5,16 @@
 \alias{pkDownDriveDir}
 \title{Download Google Drive folder contents}
 \usage{
-getGDriveDir(drivePath, localPath, authFile, rmFromDrive = FALSE)
+getGDriveDir(drivePath, localPath, email = NULL, rmFromDrive = FALSE)
 
-pkDownDriveDir(drivePath, localPath, authFile, rmFromDrive = FALSE)
+pkDownDriveDir(drivePath, localPath, email = NULL, rmFromDrive = FALSE)
 }
 \arguments{
 \item{drivePath}{Path to directory on Google Drive that contains the files to download.}
 
 \item{localPath}{Path where the files will be stored. Will be created if inexistent. No warnings if exists.}
 
-\item{authFile}{Path to RDS file with authentication token. If not exist, web authentication is performd and new file is created at path.}
+\item{email}{Google account email address.}
 
 \item{rmFromDrive}{Remove the files from Google Drive after download (logical).}
 }
