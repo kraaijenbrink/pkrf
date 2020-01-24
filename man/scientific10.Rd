@@ -9,7 +9,7 @@ scientific10(x, ...)
 \arguments{
 \item{x}{Numeric vector.}
 
-\item{...}{Any other argument passed to \code{scales::scientific()}}
+\item{...}{Any other argument passed to \code{base::format()}}
 }
 \value{
 Expression vector
