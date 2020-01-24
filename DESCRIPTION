@@ -11,7 +11,8 @@ Imports:
   colorRamps,
   base64enc,
   googledrive,
-  sp
+  sp,
+  scales
 License: GPL-2
 Encoding: UTF-8
 NeedsCompilation: no
