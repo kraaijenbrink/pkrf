@@ -5,9 +5,25 @@
 \alias{pkRastplot}
 \title{Plot raster with limits}
 \usage{
-plotRast(x, lcut = NA, hcut = NA, setNA = NA, useimage = F, ...)
+plotRast(
+  x,
+  lcut = NA,
+  hcut = NA,
+  setNA = NA,
+  useimage = F,
+  col = pkrf::ramp("parula", 256),
+  ...
+)
 
-pkRastplot(x, lcut = NA, hcut = NA, setNA = NA, useimage = F, ...)
+pkRastplot(
+  x,
+  lcut = NA,
+  hcut = NA,
+  setNA = NA,
+  useimage = F,
+  col = pkrf::ramp("parula", 256),
+  ...
+)
 }
 \arguments{
 \item{x}{raster}

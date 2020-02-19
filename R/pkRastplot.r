@@ -13,7 +13,7 @@
 #' 
 #' @return no function return
 #' @export
-plotRast = function(x, lcut=NA, hcut=NA, setNA=NA, useimage=F, ...) {
+plotRast = function(x, lcut=NA, hcut=NA, setNA=NA, useimage=F, col=pkrf::ramp('parula',256), ...) {
   
   require(raster)
   
@@ -41,9 +41,9 @@ plotRast = function(x, lcut=NA, hcut=NA, setNA=NA, useimage=F, ...) {
   
   # plot the image
   if (useimage){
-    image(x, zlim=zlimits, ...)
+    image(x, zlim=zlimits, col=col, ...)
   }else{
-    plot(x, zlim=zlimits, ...)
+    plot(x, zlim=zlimits, col=col, ...)
   }
   
 }
