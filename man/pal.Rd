@@ -5,22 +5,18 @@
 \alias{pkPal}
 \title{Load preset color palettes}
 \usage{
-pal(name = "MntHydro", number = 0, reversed = F, random = F,
-  show = F)
+pal(name = "MntHydro", number = 0, reversed = F, random = F, show = F)
 
-pkPal(name = "MntHydro", number = 0, reversed = F, random = F,
-  show = F)
+pkPal(name = "MntHydro", number = 0, reversed = F, random = F, show = F)
 }
 \arguments{
 \item{name}{Name of the palette (case-insensitive string).}
 
 \item{number}{Number of output colors desired (integer). Set to 0 to get all colors available in the palette.}
 
-\item{reversed}{Reverse palette order (logical).}
+\item{reversed}{Randomize palette order (logical).}
 
 \item{show}{Show a plot of all available color palettes (logical).}
-
-\item{reversed}{Randomize palette order (logical).}
 }
 \value{
 Vector with hex colors strings.

@@ -5,11 +5,27 @@
 \alias{pkShadowText}
 \title{Plot shadowed text labels}
 \usage{
-shadeText(x, y = NULL, labels, col = "white", bg = "black",
-  theta = seq(pi/4, 2 * pi, length.out = 8), r = 0.1, ...)
+shadeText(
+  x,
+  y = NULL,
+  labels,
+  col = "white",
+  bg = "black",
+  theta = seq(pi/4, 2 * pi, length.out = 8),
+  r = 0.1,
+  ...
+)
 
-pkShadowText(x, y = NULL, labels, col = "white", bg = "black",
-  theta = seq(pi/4, 2 * pi, length.out = 8), r = 0.1, ...)
+pkShadowText(
+  x,
+  y = NULL,
+  labels,
+  col = "white",
+  bg = "black",
+  theta = seq(pi/4, 2 * pi, length.out = 8),
+  r = 0.1,
+  ...
+)
 }
 \arguments{
 \item{x}{x position}

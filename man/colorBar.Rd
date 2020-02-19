@@ -5,19 +5,49 @@
 \alias{pkColorbar}
 \title{Plot color bar}
 \usage{
-colorBar(breaks = seq(0, 1, 0.1), colors = gray.colors(length(breaks) -
-  1), barlength = 0.5, barlwd = 0.5, axislab = "Colorscale",
-  axislabline = 2.25, locut = F, hicut = F, slantwidth = 0.05,
-  smallticks = F, axisbreaks = breaks, axisbreaklab = axisbreaks,
-  tck1 = -0.015, tck2 = -0.03, axiscex = 0.8, labelcex = 1,
-  pmgp = c(2.5, 0.66, 0), pmar = c(3, 0.5, 0.5, 0.5), ...)
+colorBar(
+  breaks = seq(0, 1, 0.1),
+  colors = gray.colors(length(breaks) - 1),
+  barlength = 0.5,
+  barlwd = 0.5,
+  axislab = "Colorscale",
+  axislabline = 2.25,
+  locut = F,
+  hicut = F,
+  slantwidth = 0.05,
+  smallticks = F,
+  axisbreaks = breaks,
+  axisbreaklab = axisbreaks,
+  tck1 = -0.015,
+  tck2 = -0.03,
+  axiscex = 0.8,
+  labelcex = 1,
+  pmgp = c(2.5, 0.66, 0),
+  pmar = c(3, 0.5, 0.5, 0.5),
+  ...
+)
 
-pkColorbar(breaks = seq(0, 1, 0.1), colors = gray.colors(length(breaks)
-  - 1), barlength = 0.5, barlwd = 0.5, axislab = "Colorscale",
-  axislabline = 2.25, locut = F, hicut = F, slantwidth = 0.05,
-  smallticks = F, axisbreaks = breaks, axisbreaklab = axisbreaks,
-  tck1 = -0.015, tck2 = -0.03, axiscex = 0.8, labelcex = 1,
-  pmgp = c(2.5, 0.66, 0), pmar = c(3, 0.5, 0.5, 0.5), ...)
+pkColorbar(
+  breaks = seq(0, 1, 0.1),
+  colors = gray.colors(length(breaks) - 1),
+  barlength = 0.5,
+  barlwd = 0.5,
+  axislab = "Colorscale",
+  axislabline = 2.25,
+  locut = F,
+  hicut = F,
+  slantwidth = 0.05,
+  smallticks = F,
+  axisbreaks = breaks,
+  axisbreaklab = axisbreaks,
+  tck1 = -0.015,
+  tck2 = -0.03,
+  axiscex = 0.8,
+  labelcex = 1,
+  pmgp = c(2.5, 0.66, 0),
+  pmar = c(3, 0.5, 0.5, 0.5),
+  ...
+)
 }
 \arguments{
 \item{breaks}{vector of break values}
@@ -44,7 +74,7 @@ pkColorbar(breaks = seq(0, 1, 0.1), colors = gray.colors(length(breaks)
 
 \item{axisbreaklab}{labels for the axisbreaks}
 
-\item{tck1}{length of small ticks}
+\item{tck1}{length of large ticks}
 
 \item{axiscex}{cex for tick label}
 
@@ -55,8 +85,6 @@ pkColorbar(breaks = seq(0, 1, 0.1), colors = gray.colors(length(breaks)
 \item{pmar}{temporary par 'mar' to use}
 
 \item{...}{other arguments passed to axis function}
-
-\item{tck1}{length of large ticks}
 }
 \value{
 plotted colorbar

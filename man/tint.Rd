@@ -7,8 +7,7 @@
 \usage{
 tint(colors = c("red", "green", "blue"), opt = "shade", factor = 0.5)
 
-pkTintShade(colors = c("red", "green", "blue"), opt = "shade",
-  factor = 0.5)
+pkTintShade(colors = c("red", "green", "blue"), opt = "shade", factor = 0.5)
 }
 \arguments{
 \item{opt}{"tint" (lighten) or "shade" (darken)}

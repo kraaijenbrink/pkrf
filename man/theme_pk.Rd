@@ -4,10 +4,17 @@
 \alias{theme_pk}
 \title{Custom ggplot2 theme PK style}
 \usage{
-theme_pk(base_size = 10, base_family = "",
-  base_line_size = base_size/22, base_rect_size = base_size/22,
-  alwd = 0.5, grid = F, yrot = F, strip = "light",
-  double_border = F)
+theme_pk(
+  base_size = 10,
+  base_family = "",
+  base_line_size = base_size/22,
+  base_rect_size = base_size/22,
+  alwd = 0.5,
+  grid = F,
+  yrot = F,
+  strip = "light",
+  double_border = F
+)
 }
 \arguments{
 \item{base_size}{base point size}

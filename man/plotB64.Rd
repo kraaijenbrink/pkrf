@@ -5,11 +5,25 @@
 \alias{pkB64}
 \title{Plot byte64}
 \usage{
-plotB64(pfun, ..., width = 200, height = 200, res = 100,
-  prefix = "<img src=\\"data:image/png;base64, ", suffix = "\\">")
+plotB64(
+  pfun,
+  ...,
+  width = 200,
+  height = 200,
+  res = 100,
+  prefix = "<img src=\\"data:image/png;base64, ",
+  suffix = "\\">"
+)
 
-pkB64(pfun, ..., width = 200, height = 200, res = 100,
-  prefix = "<img src=\\"data:image/png;base64, ", suffix = "\\">")
+pkB64(
+  pfun,
+  ...,
+  width = 200,
+  height = 200,
+  res = 100,
+  prefix = "<img src=\\"data:image/png;base64, ",
+  suffix = "\\">"
+)
 }
 \arguments{
 \item{pfun}{a function that produces a plot}

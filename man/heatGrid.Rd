@@ -5,15 +5,37 @@
 \alias{pkHeatmap}
 \title{Create heat map}
 \usage{
-heatGrid(mat = NULL, xrange = NULL, yrange = NULL, xlimit = NULL,
-  ylimit = NULL, colramp = topo.colors(200), maketicks = T,
-  makebox = T, axislwd = 0.5, locut = NULL, hicut = NULL,
-  nacut = F, ...)
+heatGrid(
+  mat = NULL,
+  xrange = NULL,
+  yrange = NULL,
+  xlimit = NULL,
+  ylimit = NULL,
+  colramp = topo.colors(200),
+  maketicks = T,
+  makebox = T,
+  axislwd = 0.5,
+  locut = NULL,
+  hicut = NULL,
+  nacut = F,
+  ...
+)
 
-pkHeatmap(mat = NULL, xrange = NULL, yrange = NULL, xlimit = NULL,
-  ylimit = NULL, colramp = topo.colors(200), maketicks = T,
-  makebox = T, axislwd = 0.5, locut = NULL, hicut = NULL,
-  nacut = F, ...)
+pkHeatmap(
+  mat = NULL,
+  xrange = NULL,
+  yrange = NULL,
+  xlimit = NULL,
+  ylimit = NULL,
+  colramp = topo.colors(200),
+  maketicks = T,
+  makebox = T,
+  axislwd = 0.5,
+  locut = NULL,
+  hicut = NULL,
+  nacut = F,
+  ...
+)
 }
 \arguments{
 \item{mat}{matrix with values to create heatmap for}
