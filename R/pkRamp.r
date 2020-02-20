@@ -71,9 +71,9 @@ ramp <- function(name='parula', number=100, reversed=F, show=F, center=0.5){
     colpal   <- getPal(name)
     if (reversed){colpal <- rev(colpal)}
     if (center!=0.5){
-      center <- center*1e3 + 1
-      colvec <- colorRampPalette(paste0('#',colpal))(1e4+1)
-      sampind <- approx(x=c(0,500,1000), y=c(0,center,1000), xout=0:1000)$y
+      censcl  <- center*1e3 + 1
+      colvec  <- colorRampPalette(paste0('#',colpal))(1e4+1)
+      sampind <- approx(y=c(0,500,1000), x=c(0,censcl,1000), xout=0:1000)$y
       sampind <- as.integer(sampind * 10 +1)
       colpal  <- gsub('#','',colvec[sampind])
     }
