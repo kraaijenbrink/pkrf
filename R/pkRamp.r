@@ -9,14 +9,14 @@
 #' @param number Number of output colors desired (integer).
 #' @param reversed Should the ramp be reversed (logical).
 #' @param show Show a plot of all available color ramps (logical).
-#' 
+#' @param center Relative position of the center of the color ramp (numeric, 0-1). Useful to change centerpoint of diverging scales.
 #' @return Vector with hex colors strings. 
 #' @export
 
-ramp <- function(name='parula', number=100, reversed=F, show=F){
+ramp <- function(name='parula', number=100, reversed=F, show=F, center=0.5){
   
   namelist <- c('Jet','Parula','Viridis','Inferno','Magma','Plasma','Cividis','ElevAG','WtSpec','RwB','PwG','OwP','Spectral',
-                'ElevNat1','ElevNat2','RwBsoft','RwBpale','Taupe', 'Blues','Greens','BW','MHblues','MHramp')
+                'ElevNat1','ElevNat2','RwBsoft','RwBpale','Taupe', 'Blues','Greens','BW','MHblues','MHramp','RyG')
   if (sum(tolower(namelist) %in% tolower(name))==0){
     message <- stop(paste0('Color ramp not available. Choose any of:\n',paste(sort(namelist),collapse='\n')))
   }
@@ -45,7 +45,9 @@ ramp <- function(name='parula', number=100, reversed=F, show=F){
            c('f7fcf5','e5f5e0','c7e9c0','a1d99b','74c476','41ab5d','238b45','006d2c','00441b'),
            c('000000','ffffff'),
            c('ffffff','232365'),
-           c('FFCD00','c1ae5e','6b6b8c','232365')
+           c('FFCD00','c1ae5e','6b6b8c','232365'),
+           c("A50026","D73027","F46D43","FDAE61","FEE08B","FFFFBF","D9EF8B","A6D96A","66BD63","1A9850","006837")
+           
     )
   }
 
@@ -53,25 +55,31 @@ ramp <- function(name='parula', number=100, reversed=F, show=F){
   if (show){ # make plot of available ramps
     x11(bg='#2d2d2d')
     op  <- par(mar=c(0.5,6,0.5,1))
-    all <- do.call(rbind,lapply(namelist, function(x) colorRampPalette(paste0('#',getPal(x)))(number)))
+    all <- do.call(rbind,lapply(namelist[order(namelist)], function(x) colorRampPalette(paste0('#',getPal(x)))(number)))
     plot(NA,axes=F,xlab='',ylab='',ylim=c(0,length(namelist)+1), xlim=c(1,number), xaxs='i', yaxs='i')
-    for (i in 1:length(namelist)){
+    for (i in 1:length(order(namelist))){
       for (j in 1:number){
         irev <-  (length(namelist):1)[i]
         polygon(x=c(j-1,j,j,j-1), y=c(irev-0.4,irev-0.4,irev+0.4,irev+0.4), border=NA, col=all[i,j])
       }
     }
-    mtext(namelist, side=2, line=0.5, at=length(namelist):1,padj=0.5,adj=1,las=2, cex=1.1, col='white')
+    mtext(namelist[order(namelist)], side=2, line=0.5, at=length(namelist):1,padj=0.5,adj=1,las=2, cex=1.1, col='white')
     par(op)
     warning('No color ramp output when "show=TRUE", just a plot with available color ramps')
     
   }else{ # generate output
     colpal   <- getPal(name)
     if (reversed){colpal <- rev(colpal)}
+    if (center!=0.5){
+      center <- center*1e3 + 1
+      colvec <- colorRampPalette(paste0('#',colpal))(1e4+1)
+      sampind <- approx(x=c(0,500,1000), y=c(0,center,1000), xout=0:1000)$y
+      sampind <- as.integer(sampind * 10 +1)
+      colpal  <- gsub('#','',colvec[sampind])
+    }
     outcolors <- colorRampPalette(paste0('#',colpal))(number)
     return(outcolors)
   }
-  
 
 }
 

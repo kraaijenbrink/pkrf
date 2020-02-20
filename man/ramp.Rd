@@ -5,9 +5,9 @@
 \alias{pkRamp}
 \title{Load preset color ramps}
 \usage{
-ramp(name = "parula", number = 100, reversed = F, show = F)
+ramp(name = "parula", number = 100, reversed = F, show = F, center = 0.5)
 
-pkRamp(name = "parula", number = 100, reversed = F, show = F)
+pkRamp(name = "parula", number = 100, reversed = F, show = F, center = 0.5)
 }
 \arguments{
 \item{name}{Name of the color ramp (string).}
@@ -17,6 +17,8 @@ pkRamp(name = "parula", number = 100, reversed = F, show = F)
 \item{reversed}{Should the ramp be reversed (logical).}
 
 \item{show}{Show a plot of all available color ramps (logical).}
+
+\item{center}{Relative position of the center of the color ramp (numeric, 0-1). Useful to change centerpoint of diverging scales.}
 }
 \value{
 Vector with hex colors strings.
