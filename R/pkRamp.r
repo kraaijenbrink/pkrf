@@ -7,13 +7,13 @@
 #' Load color ramps and palettes from presets. Identical to \code{pkrf::pal() besides some argument defaults.}
 #' @param name Name of the color ramp (string).
 #' @param number Number of output colors desired (integer). Defaults to number of colors in the pallete for qualitative type and to 100 for sequential and diverging types.
-#' @param reversed Should the ramp be reversed (logical).
-#' @param center Relative position of the center of the color ramp (numeric, 0-1). Useful to change centerpoint of diverging scales.
+#' @param reversed Reverse the output color order (logical).
 #' @param random Randomize output color order (logical).
+#' @param center Relative position of the center of the color ramp (numeric, 0-1). Useful to change centerpoint of diverging scales.
 #' @param show Show a plot of all available color ramps (logical).
 #' @return Vector with hex colors strings. 
 #' @export
-ramp <- function(name='parula', number=NULL, reversed=F, center=0.5, random=F, show=F){
+ramp <- function(name='parula', number=NULL, reversed=F, random=F, center=0.5, show=F){
   
   coldat <- tibble::tribble(
     ~name, ~type, ~source, ~colors,
@@ -80,6 +80,7 @@ ramp <- function(name='parula', number=NULL, reversed=F, center=0.5, random=F, s
     coldat$type[[which(tolower(coldat$name) %in% tolower(name))]]
   }
   
+  # force default number
   if (is.null(number)){
     if(getType(name)=='Qualitative'){
       number <- length(getPal(name))
@@ -101,6 +102,8 @@ ramp <- function(name='parula', number=NULL, reversed=F, center=0.5, random=F, s
   # Make plot of available colors
   if (show){ # make plot of available ramps
     x11(bg='#2d2d2d', height=7, width=11.3)
+    
+    if(getType(name)!='Qualitative'){number <- 100}
     
     # split the classes, sort alphabetically, and merge back
     plotdat        <- split(coldat,coldat$type)[c(1,3,2)]
