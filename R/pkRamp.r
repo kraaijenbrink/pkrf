@@ -71,6 +71,12 @@ ramp <- function(name='parula', number=NULL, reversed=F, random=F, center=0.5, s
     "BurbleTeal",'Qualitative','Internet', c('2d3047','93b7be','e0ca3c','a799b7','048a81'),
   )
   
+  # Error message in case of unknown color name
+  if (sum(tolower(coldat$name) %in% tolower(name))==0){
+    stop(paste0('Color name not available.\n\nChoose any of:\n',paste(sort(coldat$name),collapse=', '),
+                '\n\n','Use ramp(show=TRUE) or pal(show=TRUE) to plot all color ramps/palettes, types and names.'))
+  }
+  
   # function to extract correct color from table
   getPal <- function(name){
     coldat$colors[[which(tolower(coldat$name) %in% tolower(name))]]
@@ -82,32 +88,32 @@ ramp <- function(name='parula', number=NULL, reversed=F, random=F, center=0.5, s
   
   # force default number
   if (is.null(number)){
+    nodefnum <- T
     if(getType(name)=='Qualitative'){
       number <- length(getPal(name))
     }else{
       number <- 100
     }
+  }else{
+    nodefnum <- F
   }
   
   # force a hash at beginning of the hexcol
   coldat$colors <- lapply(coldat$colors, function(x) tolower(paste0('#',gsub('#','',x))))
   
-  # Warning message in case of unknown color name
-  if (sum(tolower(coldat$name) %in% tolower(name))==0){
-    message <- stop(paste0('Color name not available. Choose any of:\n',paste(sort(coldat$name),collapse=', '),
-                           '\n\n','Use ramp(show=TRUE) to plot all color ramps/palettes, types and names.'))
-  }
-  
-  
   # Make plot of available colors
   if (show){ # make plot of available ramps
     x11(bg='#2d2d2d', height=7, width=11.3)
     
-    if(getType(name)!='Qualitative'){number <- 100}
+    if(nodefnum){
+      number <- 50
+    }
     
     # split the classes, sort alphabetically, and merge back
     plotdat        <- split(coldat,coldat$type)[c(1,3,2)]
     plotdat        <- do.call(rbind,lapply(plotdat, function(x) x[order(x$name),]))
+    
+    
     
     # add blank row at type change
     typechange <- which(plotdat$type[-1] != plotdat$type[-nrow(plotdat)])
@@ -130,7 +136,7 @@ ramp <- function(name='parula', number=NULL, reversed=F, random=F, center=0.5, s
     paldat  <- paldat[-c(1:2),]
     
     # make plot
-    op  <- par(mar=c(0.5,7,0.5,7), mfcol=c(1,2))
+    op  <- par(mar=c(0.5,7,2.5,7), mfcol=c(1,2))
     barheight <- 0.6
     namecex <- 0.9
     typecex <- 1.5
@@ -145,17 +151,18 @@ ramp <- function(name='parula', number=NULL, reversed=F, random=F, center=0.5, s
         polygon(x=c(j-1,j,j,j-1), y=c(rep(irev-0.5*barheight,2),rep(irev+0.5*barheight,2)), border=NA, col=rampdat$colors[[i]][j])
       }
       if (!is.na(plotdat$name[i])){
-        polygon(x=c(0,100,100,0),y=c(rep(irev-0.5*barheight,2),rep(irev+0.5*barheight,2)), border='black', col=NA, lwd=0.5)
+        polygon(x=c(0,number,number,0),y=c(rep(irev-0.5*barheight,2),rep(irev+0.5*barheight,2)), border='black', col=NA, lwd=0.5)
       }
     }
     mtext(rampdat$name, side=2, line=0.5, at=nrow(rampdat):1,padj=0.5,adj=1,las=2, cex=namecex, col='white', font=2)
     mtext(rampdat$source, side=4, line=0.5, at=nrow(rampdat):1,padj=0.5,adj=0,las=2, cex=sourcex, col='white')
-    
     # add class labels
     classpos   <- sapply(split(rev(seq(nrow(rampdat))),rampdat$type), mean)
     mtext(names(classpos), side=2, line=5, cex=typecex, at=classpos, col='white',font=2)
+    # add title
+    mtext('Color ramps', side=3, line=0.5, cex=typecex*1.2, at=number/2, col='white',font=2)
     
-  
+    
     # pal plot =========
     plot(NA,axes=F,xlab='',ylab='',ylim=c(0,nrow(paldat)+1), xlim=c(0,1), xaxs='i', yaxs='i')
     for (i in 1:nrow(paldat)){
@@ -172,11 +179,11 @@ ramp <- function(name='parula', number=NULL, reversed=F, random=F, center=0.5, s
     }
     mtext(paldat$name, side=2, line=0.5, at=nrow(paldat):1,padj=0.5,adj=1,las=2, cex=namecex, col='white', font=2)
     mtext(paldat$source, side=4, line=0.5, at=nrow(paldat):1,padj=0.5,adj=0,las=2, cex=sourcex, col='gray80')
-    
     # add class labels
     classpos   <- sapply(split(rev(seq(nrow(paldat))),paldat$type), mean)
     mtext(names(classpos), side=2, line=5, cex=typecex, at=classpos, col='white', font=2)
-    
+    # add title
+    mtext('Color palettes', side=3, line=0.5, cex=typecex*1.2, at=1/2, col='white',font=2)
     
     par(op)
     warning('No color output when "show=TRUE", only an external plot with available ramps and palettes')
