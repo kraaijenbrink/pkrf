@@ -13,11 +13,14 @@ heatGrid(
   ylimit = NULL,
   colramp = topo.colors(200),
   maketicks = T,
+  xticks = NULL,
+  yticks = NULL,
   makebox = T,
   axislwd = 0.5,
   locut = NULL,
   hicut = NULL,
   nacut = F,
+  axisvars = NULL,
   ...
 )
 
@@ -29,11 +32,14 @@ pkHeatmap(
   ylimit = NULL,
   colramp = topo.colors(200),
   maketicks = T,
+  xticks = NULL,
+  yticks = NULL,
   makebox = T,
   axislwd = 0.5,
   locut = NULL,
   hicut = NULL,
   nacut = F,
+  axisvars = NULL,
   ...
 )
 }
@@ -50,7 +56,11 @@ pkHeatmap(
 
 \item{colramp}{the colors to use for plotting (vector)}
 
-\item{maketicks}{draw simple x,y axes at \code{pretty} tick postitions (logical).}
+\item{maketicks}{draw simple x,y axes (logical).}
+
+\item{xticks}{position of xticks, defaults to \code{pretty}}
+
+\item{yticks}{posiition of yticks, defaults to \code{pretty}}
 
 \item{makebox}{draw box line around plot (logical)}
 
@@ -61,6 +71,8 @@ pkHeatmap(
 \item{hicut}{high threshold on raster values (numeric)}
 
 \item{nacut}{values outside cutrange are set to NA instead of cut value (logical)}
+
+\item{axisvars}{list with additional arguments to \code{axis} (named list, not including \code{side},\code{at} or \code{lwd})}
 
 \item{...}{other parameters passed to \code{image} function}
 }
