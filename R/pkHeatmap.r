@@ -11,13 +11,13 @@
 #' @param xlimit the x limits of the plot (vector length 2)
 #' @param ylimit the y limits of the plot (vector length 2)
 #' @param colramp the colors to use for plotting (vector)
-#' @param maketicks draw axis ticks and tick marks (logical)
+#' @param maketicks draw simple x,y axes at \code{pretty} tick postitions (logical).
 #' @param makebox draw box line around plot (logical)
 #' @param axislwd linewidth to use for ticks and box (numeric)
 #' @param locut low threshold on raster values (numeric)
 #' @param hicut high threshold on raster values (numeric)
 #' @param nacut values outside cutrange are set to NA instead of cut value (logical)
-#' @param ... other parameters passed to image/plot/axis functions
+#' @param ... other parameters passed to \code{image} function
 #'
 #' @return plot
 #' @export
@@ -71,8 +71,8 @@ heatGrid <- function(mat=NULL, xrange=NULL, yrange=NULL, xlimit=NULL, ylimit=NUL
         ...)
   
   if (maketicks){
-    axis(1, at=pretty(xseq), lwd=axislwd, ...)
-    axis(2, at=pretty(yseq), lwd=axislwd, ...)
+    axis(1, at=pretty(xseq), lwd=axislwd)
+    axis(2, at=pretty(yseq), lwd=axislwd)
   }
   if (makebox){
     box(lwd=axislwd)

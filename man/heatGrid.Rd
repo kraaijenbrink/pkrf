@@ -50,7 +50,7 @@ pkHeatmap(
 
 \item{colramp}{the colors to use for plotting (vector)}
 
-\item{maketicks}{draw axis ticks and tick marks (logical)}
+\item{maketicks}{draw simple x,y axes at \code{pretty} tick postitions (logical).}
 
 \item{makebox}{draw box line around plot (logical)}
 
@@ -62,7 +62,7 @@ pkHeatmap(
 
 \item{nacut}{values outside cutrange are set to NA instead of cut value (logical)}
 
-\item{...}{other parameters passed to image/plot/axis functions}
+\item{...}{other parameters passed to \code{image} function}
 }
 \value{
 plot
