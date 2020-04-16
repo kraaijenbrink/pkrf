@@ -12,6 +12,7 @@ Imports:
   base64enc,
   googledrive,
   sp,
+  ggplot2,
   scales,
   tibble
 License: GPL-2
