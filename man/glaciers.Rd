@@ -4,7 +4,8 @@
 \name{glaciers}
 \alias{glaciers}
 \title{Glacier data.}
-\format{A data frame with 303 rows and 14 variables:
+\format{
+A data frame with 303 rows and 14 variables:
 \describe{
   \item{\code{longitude}}{Cell centroid longitude}
   \item{\code{latitude}}{Cell centroid latitude}
@@ -20,7 +21,8 @@
   \item{\code{mass_ela}}{Glacier mass below the ELA (Gt)}
   \item{\code{mass_debris}}{Debris covered glacier mass (Gt)}
   \item{\code{mass_debris_ela}}{Debris covered glacier mass below the ELA (Gt)}
-}}
+}
+}
 \source{
 \href{https://www.nature.com/articles/nature23878}{Kraaijenbrink et al., 2017}
 }

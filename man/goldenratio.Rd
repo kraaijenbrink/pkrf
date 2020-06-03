@@ -4,7 +4,9 @@
 \name{goldenratio}
 \alias{goldenratio}
 \title{Golden ratio.}
-\format{An object of class \code{numeric} of length 1.}
+\format{
+An object of class \code{numeric} of length 1.
+}
 \usage{
 goldenratio
 }

@@ -25,13 +25,14 @@ plotRast = function(x, lcut=NA, hcut=NA, setNA=NA, useimage=F, col=pkrf::ramp('p
     
   }else if (!is.na(lcut)){
     x[x<lcut] <- lcut
-    zlimits   <- c(lcut, cellStats(x,max))
-  }
-  else if (!is.na(hcut)){
+    zlimits   <- c(lcut, raster::cellStats(x,max))
+    
+  }else if (!is.na(hcut)){
     x[x>hcut] <- hcut
-    zlimits   <- c(cellStats(x,min), hcut)
+    zlimits   <- c(raster::cellStats(x,min), hcut)
+    
   }else{
-    zlimits <- cellStats(x, range)
+    zlimits <- raster::cellStats(x, range)
   }
   
   # set NA
@@ -41,9 +42,9 @@ plotRast = function(x, lcut=NA, hcut=NA, setNA=NA, useimage=F, col=pkrf::ramp('p
   
   # plot the image
   if (useimage){
-    image(x, zlim=zlimits, col=col, ...)
+    raster::image(x, zlim=zlimits, col=col, ...)
   }else{
-    plot(x, zlim=zlimits, col=col, ...)
+    raster::plot(x, zlim=zlimits, col=col, ...)
   }
   
 }

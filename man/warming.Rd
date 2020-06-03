@@ -4,7 +4,8 @@
 \name{warming}
 \alias{warming}
 \title{Global warming data.}
-\format{A data frame with 110 rows and 7 variables:
+\format{
+A data frame with 110 rows and 7 variables:
 \describe{
   \item{\code{gcm}}{General Circulation Model.}
   \item{\code{rcp}}{Representative Concentration Pathway.}
@@ -13,7 +14,8 @@
   \item{\code{dt_hma}}{Temperature rise for only the glaciers in HMA}
   \item{\code{dv_hma}}{EOC loss of glacier volume, given in percentage of their 2005 volume.}
   \item{\code{deg15scen}}{Models of the +1.5 °C scenario, i.e. 1.5 ± 0.1 °C at the EOC.}
-}}
+}
+}
 \source{
 \href{https://www.nature.com/articles/nature23878}{Kraaijenbrink et al., 2017}
 }
