@@ -11,9 +11,10 @@
 #' @param random Randomize output color order (logical).
 #' @param center Relative position of the center of the color ramp (numeric, 0-1). Useful to change centerpoint of diverging scales.
 #' @param show Show a plot of all available color ramps (logical).
+#' @param collapse Print a single comma-separated and quoted string of colors to stdout
 #' @return Vector with hex colors strings. 
 #' @export
-ramp <- function(name='parula', number=NULL, reversed=F, random=F, center=0.5, show=F){
+ramp <- function(name='parula', number=NULL, reversed=F, random=F, center=0.5, show=F, collapse=F){
   
   coldat <- tibble::tribble(
     ~name, ~type, ~source, ~colors,
@@ -44,6 +45,7 @@ ramp <- function(name='parula', number=NULL, reversed=F, random=F, center=0.5, s
     "Precip2", 'Sequential', 'CPT-City',c("#FFFFFF","#EDFAC2","#CDFFCD","#99F0B2","#53BD9F","#32A696","#3296B4","#0570B0","#05508C","#0A1F96","#2C0246","#6A2C5A"),
     "BluesIce",'Sequential', 'CPT-City', c("#EAFDFD","#E8FCFC","#E7FBFB","#E5FAFB","#E3F9FA","#E1F7F9","#E0F6F8","#DEF5F7","#DCF4F6","#DAF3F5","#D8F2F4","#D6F1F3","#D5F0F2","#D3EFF1","#D1EEF0","#CFEDEF","#CDECEF","#CBEBEE","#C9EAED","#C8E9EC","#C6E8EB","#C4E7EA","#C2E6E9","#C0E6E8","#BEE5E7","#BCE4E7","#BAE3E6","#B9E2E5","#B7E1E4","#B5E0E3","#B3DFE3","#B1DEE2","#AFDDE1","#ADDCE0","#ABDBE0","#A9DADF","#A8D9DE","#A6D8DE","#A4D7DD","#A2D6DC","#A0D6DC","#9ED5DB","#9CD4DA","#9AD3DA","#99D2D9","#97D1D9","#95D0D8","#93CFD8","#92CED7","#90CDD7","#8ECCD6","#8CCBD6","#8BCAD5","#89C9D5","#88C8D4","#86C7D4","#85C6D3","#83C5D3","#82C4D3","#80C3D2","#7FC2D2","#7DC1D1","#7CC0D1","#7BBFD0","#79BED0","#78BDD0","#77BCCF","#75BBCF","#74BACE","#73B9CE","#72B8CE","#71B6CD","#6FB5CD","#6EB4CC","#6DB3CC","#6CB2CB","#6BB1CB","#6AB0CB","#69AFCA","#68AECA","#67ADC9","#65ACC9","#64ABC9","#63AAC8","#62A9C8","#61A8C7","#60A7C7","#5FA6C7","#5FA4C6","#5EA3C6","#5DA2C5","#5CA1C5","#5BA0C5","#5A9FC4","#599EC4","#589DC3","#579CC3","#569BC3","#559AC2","#5599C2","#5498C2","#5397C1","#5296C1","#5195C0","#5194C0","#5092C0","#4F91BF","#4E90BF","#4E8FBF","#4D8EBE","#4C8DBE","#4B8CBD","#4B8BBD","#4A8ABD","#4989BC","#4988BC","#4887BC","#4786BB","#4785BB","#4684BB","#4682BA","#4581BA","#4580B9","#447FB9","#447EB9","#437DB8","#437CB8","#427BB7","#427AB7","#4279B7","#4178B6","#4176B6","#4075B5","#4074B5","#4073B4","#4072B4","#3F71B4","#3F70B3","#3F6FB3","#3F6EB2","#3F6CB2","#3F6BB1","#3E6AB0","#3E69B0","#3E68AF","#3E67AF","#3E66AE","#3E65AD","#3E63AD","#3E62AC","#3E61AB","#3E60AB","#3E5FAA","#3E5EA9","#3E5DA8","#3E5CA7","#3E5AA6","#3F59A5","#3F58A4","#3F57A3","#3F56A2","#3F55A1","#3F54A0","#3F539F","#3F529E","#3F519D","#3F509B","#3F4F9A","#3F4E99","#3F4C97","#3F4B96","#3F4A95","#3E4993","#3E4992","#3E4890","#3E478F","#3E468D","#3E458C","#3D448A","#3D4389","#3D4287","#3C4185","#3C4084","#3C3F82","#3B3E80","#3B3E7F","#3A3D7D","#3A3C7B","#3A3B7A","#393A78","#393976","#383975","#383873","#373771","#363670","#36356E","#35356C","#35346B","#343369","#333267","#333266","#323164","#313062","#312F61","#302F5F","#2F2E5E","#2F2D5C","#2E2C5A","#2D2B59","#2C2B57","#2C2A55","#2B2954","#2A2852","#292851","#29274F","#28264E","#27254C","#26254A","#252449","#252347","#242246","#232244","#222143","#212041","#201F40","#1F1F3E","#1F1E3D","#1E1D3B","#1D1C3A","#1C1C38","#1B1B37","#1A1A35","#191934","#181832","#171831","#17172F","#16162E","#15152C","#14142B","#13132A","#121328","#111227","#101125","#0F1024","#0E0F22","#0D0E21","#0C0D1F","#0B0D1E","#0A0C1D","#090B1B","#080A1A","#070918","#060817","#050715","#050614","#040613"),
     "Tempo",'Sequential', 'CPT-City', c("#FFF6F4","#FDF5F3","#FCF4F1","#FBF3F0","#F9F2EE","#F8F1ED","#F7F0EB","#F5EFEA","#F4EEE8","#F2EDE7","#F1ECE5","#F0EBE4","#EEEAE2","#EDEAE1","#EBE9DF","#EAE8DE","#E9E7DD","#E7E6DB","#E6E5DA","#E4E4D8","#E3E3D7","#E2E2D6","#E0E2D4","#DFE1D3","#DDE0D1","#DCDFD0","#DBDECF","#D9DDCD","#D8DDCC","#D6DCCB","#D5DBC9","#D3DAC8","#D2D9C7","#D1D8C5","#CFD8C4","#CED7C3","#CCD6C1","#CBD5C0","#C9D4BF","#C8D4BE","#C6D3BC","#C5D2BB","#C3D1BA","#C2D1B9","#C0D0B7","#BFCFB6","#BDCEB5","#BCCEB4","#BACDB3","#B9CCB2","#B7CBB0","#B6CBAF","#B4CAAE","#B3C9AD","#B1C8AC","#B0C8AB","#AEC7AA","#ACC6A9","#ABC5A8","#A9C5A6","#A8C4A5","#A6C3A4","#A4C3A3","#A3C2A2","#A1C1A1","#A0C0A0","#9EC09F","#9CBF9F","#9BBE9E","#99BE9D","#97BD9C","#96BC9B","#94BC9A","#92BB99","#91BA98","#8FBA97","#8DB997","#8BB896","#8AB795","#88B794","#86B693","#85B593","#83B592","#81B491","#7FB390","#7DB390","#7CB28F","#7AB18E","#78B18E","#76B08D","#74AF8D","#72AF8C","#71AE8B","#6FAD8B","#6DAD8A","#6BAC8A","#69AB89","#67AB89","#65AA88","#63A988","#61A987","#5FA887","#5DA786","#5BA686","#59A685","#57A585","#56A485","#54A484","#52A384","#50A284","#4EA183","#4BA183","#49A083","#479F82","#459F82","#439E82","#419D82","#3F9C81","#3D9C81","#3B9B81","#3A9A81","#389981","#369880","#349880","#329780","#309680","#2E9580","#2C947F","#2A937F","#29937F","#27927F","#25917F","#24907F","#228F7E","#218E7E","#1F8D7E","#1E8D7E","#1C8C7E","#1B8B7D","#1A8A7D","#19897D","#17887D","#16877C","#16867C","#15857C","#14847C","#13847B","#13837B","#12827B","#12817B","#11807A","#117F7A","#117E7A","#117D79","#117C79","#117B79","#117A78","#117978","#117878","#117777","#117677","#127676","#127576","#127476","#137375","#137275","#137174","#147074","#146F73","#146E73","#156D73","#156C72","#166B72","#166A71","#166971","#176870","#176770","#17666F","#18656F","#18656E","#18646E","#19636D","#19626D","#19616C","#19606C","#1A5F6B","#1A5E6B","#1A5D6A","#1A5C6A","#1A5B69","#1B5A68","#1B5968","#1B5867","#1B5867","#1B5766","#1B5666","#1C5565","#1C5465","#1C5364","#1C5263","#1C5163","#1C5062","#1C4F62","#1C4E61","#1C4D61","#1C4C60","#1C4C5F","#1C4B5F","#1C4A5E","#1C495E","#1C485D","#1C475D","#1C465C","#1C455B","#1C445B","#1C435A","#1C425A","#1C4259","#1C4158","#1C4058","#1B3F57","#1B3E57","#1B3D56","#1B3C56","#1B3B55","#1B3A54","#1B3954","#1B3853","#1A3753","#1A3652","#1A3651","#1A3551","#1A3450","#1A3350","#19324F","#19314F","#19304E","#192F4D","#192E4D","#182D4C","#182C4C","#182B4B","#182A4B","#18294A","#17284A","#172749","#172648","#172548","#172447","#162347","#162246","#162146","#162045","#151F45","#151E44","#151D44"),
+    
     # diverging ramps
     "RwB", 'Diverging', 'ColorBrewer', c("67001F","B2182B","D6604D","F4A582","FDDBC7","F7F7F7","D1E5F0","92C5DE","4393C3","2166AC","053061"),
     "RwBsoft", 'Diverging', 'Custom', c('93021b','e28f76','F4F4F4','8c95ad','2b2d42'),
@@ -229,7 +231,13 @@ ramp <- function(name='parula', number=NULL, reversed=F, random=F, center=0.5, s
     }else{
       outcolors <- colorRampPalette(colpal)(number)
     }
-    return(outcolors)
+    
+    if (collapse){
+      cat(pkrf::collapseString(outcolors, quotes=T), '\n')
+      warning('\nOnly collapsed string of colors printed to stdout because collapse=TRUE')
+    }else{
+      return(outcolors)
+    }
   }
 }
 

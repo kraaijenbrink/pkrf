@@ -11,7 +11,8 @@ ramp(
   reversed = F,
   random = F,
   center = 0.5,
-  show = F
+  show = F,
+  collapse = F
 )
 
 pkRamp(
@@ -20,7 +21,8 @@ pkRamp(
   reversed = F,
   random = F,
   center = 0.5,
-  show = F
+  show = F,
+  collapse = F
 )
 }
 \arguments{
@@ -35,6 +37,8 @@ pkRamp(
 \item{center}{Relative position of the center of the color ramp (numeric, 0-1). Useful to change centerpoint of diverging scales.}
 
 \item{show}{Show a plot of all available color ramps (logical).}
+
+\item{collapse}{Print a single comma-separated and quoted string of colors to stdout}
 }
 \value{
 Vector with hex colors strings.
