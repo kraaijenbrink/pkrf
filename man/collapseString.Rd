@@ -4,14 +4,14 @@
 \alias{collapseString}
 \title{Collapse string}
 \usage{
-collapseString(x, delimiter = ",", add_quotes = F)
+collapseString(x, delimiter = ",", quotes = F)
 }
 \arguments{
 \item{x}{(vector of strings}
 
 \item{delimiter}{character(s) used as delimiter}
 
-\item{add_quotes}{add quotes to each string}
+\item{quotes}{add quotes to each string}
 }
 \value{
 collapsed string

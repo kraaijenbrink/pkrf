@@ -11,7 +11,7 @@
 #' @return collapsed string
 #' @export
 collapseString = function(x, delimiter=',',quotes=F) {
-  if (add_quotes){
+  if (quotes){
     paste0('"',paste(x, collapse=paste0('"',delimiter,'"')),'"')
   }else{
     paste(x, collapse=delimiter)
