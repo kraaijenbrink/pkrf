@@ -14,7 +14,7 @@
 #' @param collapse Print a single comma-separated and quoted string of colors to stdout
 #' @return Vector with hex colors strings. 
 #' @export
-ramp <- function(name='parula', number=NULL, reversed=F, random=F, center=0.5, show=F, collapse=F){
+ramp <- function(name='viridis', number=NULL, reversed=F, random=F, center=0.5, show=F, collapse=F){
   
   coldat <- tibble::tribble(
     ~name, ~type, ~source, ~colors,
@@ -135,7 +135,11 @@ ramp <- function(name='parula', number=NULL, reversed=F, random=F, center=0.5, s
   # Make plot of available colors
   if (show){ # make plot of available ramps
     
-    x11(bg='#2d2d2d', height=9.5, width=13)
+    if (Sys.info()["sysname"] == "Darwin") {
+      quartz(bg = '#2d2d2d', height = 9.5, width = 13)
+    } else {
+      x11(bg = '#2d2d2d', height = 9.5, width = 13)
+    }
     
     if(nodefnum){
       number <- 50
