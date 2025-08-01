@@ -136,7 +136,7 @@ ramp <- function(name='viridis', number=NULL, reversed=F, random=F, center=0.5, 
   if (show){ # make plot of available ramps
     
     if (Sys.info()["sysname"] == "Darwin") {
-      quartz(bg = '#2d2d2d', height = 9.5, width = 13)
+      quartz(bg = '#2d2d2d', height = 9.5*0.75, width = 13*0.75)
     } else {
       x11(bg = '#2d2d2d', height = 9.5, width = 13)
     }
